@@ -16,7 +16,6 @@ class DoctorForm(forms.ModelForm):
             "password",
         )
 
-
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
