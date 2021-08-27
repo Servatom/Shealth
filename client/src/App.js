@@ -1,9 +1,11 @@
-
 import './App.css';
+import LandingPage from './pages/LandingPage';
+
+
 
 function App() {
   return (
-    <h1>Shealth</h1>
+    <LandingPage/>
   );
 }
 

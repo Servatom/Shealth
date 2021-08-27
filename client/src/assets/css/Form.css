@@ -1,0 +1,77 @@
+.form-wrapper
+{
+    margin: 10vh auto 5vh;
+    padding: 100px 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+.login, .register
+{
+    margin: 0 20px;
+    padding: 0px 20px;
+}
+
+.form-wrapper h1
+{
+    font-size: 3rem;
+    margin: 0;
+    color: var(--textcolor);
+}
+
+.form-wrapper p
+{
+    font-size: 1.3rem;
+}
+
+
+label, input{
+    display: block;
+    margin: 5px 0;
+}
+
+.form-wrapper label
+{
+    color: var(--brown);
+    font-weight: 600;
+}
+
+.form-wrapper input
+{
+    background-color: rgba(139, 137, 137, 0.39);
+    border-radius: 5px;
+    border: none;
+    /* border-bottom: 2px solid var(--textcolor); */
+    padding: 8px 10px;
+    font-size: 1.2rem;
+    color: var(--brown-dark);
+    margin: 10px 0 20px;
+    width: 90%;
+    min-width: 200px;
+}
+input:focus
+{
+    outline: none;
+}
+
+.form-wrapper button
+{
+    display: block;
+    margin: 20px 0px;
+    padding: 8px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: rgb(243, 233, 140);
+    border: none;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.registerBtn
+{
+    margin-top: 60px ;
+}
