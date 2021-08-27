@@ -32,3 +32,7 @@ class PatientRegisterView(APIView):
         else:
             return Response({'detail': 'Patient registration failed', 'errors': form.errors})
             
+
+class Index(APIView):
+    def get(self, request):
+        return Response({'detail': 'Shealth'})
