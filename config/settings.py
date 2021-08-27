@@ -25,7 +25,7 @@ SECRET_KEY = '$z9p!s+f+n$#*ny_u08q2@%1%rxkc1mb7m53en_np8z7c%98t7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     'rest_framework',
+    'sslserver',
 ]
 
 MIDDLEWARE = [

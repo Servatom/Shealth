@@ -1,0 +1,19 @@
+**/*.pyc
+**/__pycache__
+!.github
+
+# Environment Variable
+.env
+
+# Ignore local db
+*.sqlite3
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+
+# VS Code Settings
+.vscode
+
+# ignore ssl certs
+*.pem
