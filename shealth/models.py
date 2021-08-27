@@ -10,16 +10,16 @@ def user_directory_path(instance, filename):
 
 def generateCode(length=6):
     random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=length))
-    if Doctor.objects.filter(code=random_str).exists():
+    if Doctor.objects.filter(doc_id=random_str).exists():
         return generateCode()
     return random_str
 
-class Doctor(AbstractBaseUser):
+class Doctor(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     doc_id = models.CharField(max_length=6, unique=True)
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    phone = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    phone = models.CharField(max_length=100, unique=True)
     speciality = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -35,7 +35,7 @@ class Doctor(AbstractBaseUser):
         super(Doctor, self).save(*args, **kwargs)
 
 
-class Patient(AbstractBaseUser):
+class Patient(models.Model):
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -43,8 +43,8 @@ class Patient(AbstractBaseUser):
     )
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    phone = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    phone = models.CharField(max_length=100, unique=True)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
