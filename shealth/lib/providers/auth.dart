@@ -98,11 +98,12 @@ Future getPdfAndUpload()async{
   final filePath = await FlutterFileDialog.pickFile(params: params);
   final path = Uri.parse(filePath!);
   File file = File.fromUri(path);
+  final filename = file.path.split('/').last;
   final bytes = await file.readAsBytes();
   await http.post(url2,
   headers: {
   'Authorization': 'Token $_token',
-  'Content-Disposition': 'multipart/form-data; filename=test.pdf',
+  'Content-Disposition': 'multipart/form-data; filename=$filename',
   'Content-Type': 'application/pdf'
   },
   body: bytes
