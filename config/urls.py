@@ -26,7 +26,9 @@ urlpatterns = [
     path("register/p/", views.PatientRegisterView.as_view(), name="patient_register"),
     path("auth/", include("dj_rest_auth.urls")),
     path("doctor/qrcode/", views.DoctorQRCode.as_view(), name="give_qrcode"),
+    path("doctor/doc_id/", views.DoctorDocIdView.as_view(), name="give_doc_id"),
     path("patient/upload/", views.UploadDocs.as_view(), name="upload_docs"),
+    path("patient/access/doc_id/", views.GiveAccessPatient.as_view(), name="give_doc_id"),
     path("detail/", views.UserDetailView.as_view(), name="user_detail"),
 ]
 

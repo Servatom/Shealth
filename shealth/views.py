@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
-from shealth.models import Doctor, Patient, Appointment
+from shealth.models import Doctor, Patient, Appointment, User
 from shealth.forms import DoctorCreationForm, PatientCreationForm
 from shealth.serializers import RecordSerializer, UserSerializer
 from shealth.qrcodeGenerate import *
@@ -56,7 +56,7 @@ class UploadDocs(APIView):
     permission_classes = (IsAuthenticated,)
     parser_classes = (FileUploadParser, FormParser, MultiPartParser)
 
-    def put(self, request, format=None):
+    def post(self, request, format=None):
         data = request.data
         print(data)
         data.update({"patient": self.request.user.uuid})
@@ -77,8 +77,32 @@ class UserDetailView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+class DoctorDocIdView(APIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self, request):
+        doctor_id = Doctor.objects.get(user=request.user).doc_id
+        print(doctor_id)
+        return Response({"doc_id": doctor_id})
+
         
 
+class GiveAccessPatient(APIView):
+    permission_classes = (IsAuthenticated,)
+    def post(self, request):
+        doc_id = request.data['doc_id']
+        print(doc_id)
+        patient = request.user.patient
+        doctor = None
+        try:
+            doctor = Doctor.objects.get(doc_id=doc_id)
+        except:
+            return Response({"detail": "Doctor not found"}, status=404)
+        
+
+        # check if the doctor and patient are already connected
+        Appointment.objects.get_or_create(doctor=Doctor.objects.get(doc_id=doc_id), patient=patient)
+        return Response({"message": "Access given to {}".format(doctor.user.email)})
 
 class Index(APIView):
     def get(self, request):
