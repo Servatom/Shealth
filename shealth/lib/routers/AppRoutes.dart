@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shealth/UI/homepage.dart';
+import 'package:shealth/UI/loginScreen.dart';
+import 'package:shealth/UI/registerDoctor.dart';
 import 'package:shealth/UI/tobeornottobe.dart';
 
 import 'RouteNames.dart';
@@ -11,6 +13,10 @@ class AppRoutes {
       case RouteNames.tobe:
       var type = settings.arguments as String;
       return MaterialPageRoute<dynamic>(builder: (_) => TobeOrNotToBe(type: type,));
+      case RouteNames.registerDoctor:
+      return MaterialPageRoute<dynamic>(builder: (_) => RegisterDoctor());
+      case RouteNames.login:
+      return MaterialPageRoute<dynamic>(builder: (_) => LoginScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

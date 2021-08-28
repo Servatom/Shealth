@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shealth/UI/sizeconfig.dart';
+import 'package:shealth/routers/AppRoutes.dart';
+import 'package:shealth/routers/RouteNames.dart';
 import 'custombutton.dart';
 class TobeOrNotToBe extends StatelessWidget {
   TobeOrNotToBe({required this.type});
@@ -29,7 +31,12 @@ class TobeOrNotToBe extends StatelessWidget {
             CustomButton(
               text: 'Doctor',
               onTap: (){
-                print(type);
+                if(type == 'register'){
+                  Navigator.pushNamed(context, RouteNames.registerDoctor );
+                }
+                else{
+                  Navigator.pushNamed(context, RouteNames.login);
+                }
               }
             ),
             SizedBox(height: 20,),
@@ -46,7 +53,14 @@ class TobeOrNotToBe extends StatelessWidget {
             SizedBox(height: 20,),
             CustomButton(
               text: 'Patient',
-              onTap: (){},
+              onTap: (){
+                if(type == 'register'){
+                  Navigator.pushNamed(context, RouteNames.registerDoctor );
+                }
+                else{
+                  Navigator.pushNamed(context, RouteNames.login);
+                }
+              },
 
             )
           ],
