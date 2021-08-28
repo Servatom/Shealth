@@ -14,13 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from shealth import views
 
 urlpatterns = [
-    path('', views.Index.as_view(), name='index'),
-    path('admin/', admin.site.urls),
-    path('register/d/', views.DoctorRegisterView.as_view(), name='doctor_register'),
-    path('register/p/', views.PatientRegisterView.as_view(), name='patient_register'),
+    path("", views.Index.as_view(), name="index"),
+    path("admin/", admin.site.urls),
+    path("register/d/", views.DoctorRegisterView.as_view(), name="doctor_register"),
+    path("register/p/", views.PatientRegisterView.as_view(), name="patient_register"),
+    path("auth/", include("dj_rest_auth.urls")),
+    path("doctor/qrcode/", views.DoctorQRCode.as_view(), name="give_qrcode"),
+    path("doctor/doc_id/", views.DoctorDocIdView.as_view(), name="give_doc_id"),
+    path("patient/upload/", views.UploadDocs.as_view(), name="upload_docs"),
+    path("patient/access/doc_id/", views.GiveAccessPatient.as_view(), name="give_doc_id"),
+    path("detail/", views.UserDetailView.as_view(), name="user_detail"),
+    path("patient/records/", views.ListRecords.as_view(), name="patient_records_list"),
+    path("patient/dlist/", views.ListDoctors.as_view(), name="patient_doctors_list"),
+    path("doctor/plist/", views.ListPatients.as_view(), name="patient_patients_list"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
