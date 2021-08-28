@@ -30,7 +30,9 @@ urlpatterns = [
     path("patient/upload/", views.UploadDocs.as_view(), name="upload_docs"),
     path("patient/access/doc_id/", views.GiveAccessPatient.as_view(), name="give_doc_id"),
     path("detail/", views.UserDetailView.as_view(), name="user_detail"),
-    path("patient/records/", views.ListRecords.as_view(), name="user_list"),
+    path("patient/records/", views.ListRecords.as_view(), name="patient_records_list"),
+    path("patient/dlist/", views.ListDoctors.as_view(), name="patient_doctors_list"),
+    path("doctor/plist/", views.ListPatients.as_view(), name="patient_patients_list"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
