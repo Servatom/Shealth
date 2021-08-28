@@ -3,6 +3,7 @@ import LandingPage from './pages/LandingPage';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/login" exact>
           <Login/>
+        </Route>
+        <Route path="/dashboard" exact>
+          <Dashboard/>
         </Route>
       </Switch>
     </Router>
