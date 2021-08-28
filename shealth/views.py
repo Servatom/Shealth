@@ -1,3 +1,4 @@
+from re import search
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -94,7 +95,12 @@ class UserDetailView(APIView):
             return Response({"detail": "You don't have access to this user"})
         user = User.objects.get(email=email)
         serializer = UserSerializer(user)
-        return Response(serializer.data)
+        result = serializer.data
+        print(serializer.data)
+        if not serializer.data["is_doctor"]:
+            result["gender"] = user.patient.sex
+            print(result)
+        return Response(result)
 
 
 class DoctorDocIdView(APIView):
