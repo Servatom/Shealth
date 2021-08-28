@@ -1,7 +1,7 @@
 import '../assets/css/Landing.css';
 import illustration from "../assets/images/medical2.svg";
 import {Redirect, Link} from 'react-router-dom';
-import Register from '../components/Register';
+import logo from "../assets/images/logo2.png";
 
 const LandingPage =()=>{
     
@@ -9,11 +9,15 @@ const LandingPage =()=>{
     return(
         <div className="landingcontainer">
             <div className="left">
-            <h1 className="title">Shealth</h1>
+                <div className="header">
+                <img src={logo}/>
+                <h1 className="title">Shealth</h1>
+                </div>
+            
             <p className="tagline">Organise your medical history with ease</p>
             <div className="buttons">
-                <button>Login</button>
-                <Link to='/register' ><button>Sign Up</button></Link>
+                <Link to="/login"><button>Login</button></Link>
+                <Link to='/register' ><button>Register</button></Link>
             </div>
             </div>
             <div className="right">

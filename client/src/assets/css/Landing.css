@@ -29,6 +29,22 @@
 {
     width: 100%;
 }
+.header
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+}
+
+.header img
+{
+    height: 6rem;
+    align-self: flex-end;
+    margin: 0 10px 20px;
+
+}
 
 .title
 {

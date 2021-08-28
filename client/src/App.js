@@ -1,7 +1,8 @@
 import './App.css';
 import LandingPage from './pages/LandingPage';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Register from './components/Register';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route path="/register" exact>
           <Register/>
+        </Route>
+        <Route path="/login" exact>
+          <Login/>
         </Route>
       </Switch>
     </Router>
