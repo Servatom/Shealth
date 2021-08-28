@@ -1,12 +1,13 @@
 import random
 import string
 import uuid
-
+from django.contrib.auth.models import AbstractBaseUser
+from shealth.managers import UserManager
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
 def user_directory_path(instance, filename):
-        return 'records/{0}/{1}'.format(instance.patient.uuid, filename)
+        return 'records/{0}/{1}'.format(instance.patient.user.uuid, filename)
 
 def generateCode(length=6):
     random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=length))
@@ -14,21 +15,49 @@ def generateCode(length=6):
         return generateCode()
     return random_str
 
-class Doctor(models.Model):
+class User(AbstractBaseUser):
+    """
+    Custom User model
+    """
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    doc_id = models.CharField(max_length=6, unique=True)
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
+    email = models.EmailField(
+        max_length=255, unique=True, verbose_name="email address"
+    )
     phone = models.CharField(max_length=100, unique=True)
-    speciality = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    name = models.CharField("Name", max_length=20)
+    is_doctor = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    password = models.CharField(max_length=100)
+    
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name",]
+    
+
+    objects = UserManager()
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
+    def get_short_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
+
+class Doctor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    speciality = models.CharField(max_length=20)
+    doc_id = models.CharField(max_length=6, unique=True)
+
+    def __str__(self):
+        return self.user.name
 
     def save(self, *args, **kwargs):
         self.doc_id = generateCode()
@@ -41,20 +70,12 @@ class Patient(models.Model):
         ('F', 'Female'),
         ('O', 'Others'),
     )
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
-    phone = models.CharField(max_length=100, unique=True)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     age = models.IntegerField()
     sex = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    created_at = models.DateTimeField(auto_now_add=True)
-    password = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.user.name
 
 
 class Record(models.Model):
@@ -63,7 +84,7 @@ class Record(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.patient.name
+        return self.patient.user.name
 
 
 class Appointment(models.Model):
@@ -77,4 +98,4 @@ class Appointment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.patient.name
+        return self.patient.user.name
