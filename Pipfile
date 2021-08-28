@@ -4,9 +4,26 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-a = "*"
-django = "*"
-
+asgiref = "*"
+dj-rest-auth = "*"
+django-cors-headers = "*"
+django-sslserver = "*"
+djangorestframework = "*"
+ecdsa = "*"
+jose = "*"
+numpy = "*"
+opencv-python = "*"
+pyasn1 = "*"
+pydantic = "*"
+python-jose = "*"
+pytz = "*"
+qrcode = "*"
+rsa = "*"
+six = "*"
+sqlparse = "*"
+typing-extensions = "*"
+Django = "*"
+Pillow = "*"
 [dev-packages]
 
 [requires]
