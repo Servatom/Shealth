@@ -30,3 +30,4 @@ class PatientForm(forms.ModelForm):
             "sex",
             "password",
         )
+        
