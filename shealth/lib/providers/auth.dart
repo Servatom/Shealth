@@ -4,6 +4,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
+class User{
+  final email;
+  User({this.email});
+}
 class Auth extends ChangeNotifier {
   String? _token ;
   bool get isAuth {
@@ -13,7 +17,7 @@ class Auth extends ChangeNotifier {
   String get token{
     return _token!;
   }
-
+ late User user ;
   Future<void> registerDoctor(String name, String email, String phNo,
       String speciality, String password) async {
     final url = Uri.parse('https://shealthapi.servatom.com/register/d/');
@@ -48,10 +52,13 @@ class Auth extends ChangeNotifier {
       if (response.statusCode != 200) {
         var responseData = jsonDecode(response.body) as Map<String, dynamic>;
         var error = responseData["errors"] as Map<String, dynamic>;
+      }else{
+        print('nahi hua');
       }
     } catch (e) {
       print(e);
     }
+   
   }
 
   Future<void> signIn(String email, String password) async {
@@ -63,12 +70,15 @@ class Auth extends ChangeNotifier {
       });
       if (response.statusCode == 200) {
         _token = jsonDecode(response.body)["key"];
+        user = User(email: email);
         final prefs = await SharedPreferences.getInstance();
         prefs.setString('userData', _token!);
+        prefs.setString('email', user.email);
       }
     } catch (error) {
       throw error;
     }
+     
   }
   void logout() async {
     _token = null;
@@ -83,31 +93,13 @@ class Auth extends ChangeNotifier {
       return false;
     }
     _token = prefs.getString('userData');
+    user = User(email: prefs.getString('email'));
     notifyListeners();
     
     return true;
   }
-  final url2 = Uri.parse('https://shealthapi.servatom.com/patient/upload/');
+  
  
-Future getPdfAndUpload()async{
-  print(_token);
-  final params = OpenFileDialogParams(
-    dialogType: OpenFileDialogType.document,
-    sourceType: SourceType.photoLibrary,
-  );
-  final filePath = await FlutterFileDialog.pickFile(params: params);
-  final path = Uri.parse(filePath!);
-  File file = File.fromUri(path);
-  final filename = file.path.split('/').last;
-  final bytes = await file.readAsBytes();
-  await http.post(url2,
-  headers: {
-  'Authorization': 'Token $_token',
-  'Content-Disposition': 'multipart/form-data; filename=$filename',
-  'Content-Type': 'application/pdf'
-  },
-  body: bytes
-  );
-}
+
 
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shealth/UI/homepage.dart';
 import 'package:shealth/UI/landingpage.dart';
 import 'package:shealth/UI/loginScreen.dart';
+import 'package:shealth/UI/pdfpage.dart';
 import 'package:shealth/UI/registerDoctor.dart';
 import 'package:shealth/UI/registerPatient.dart';
 import 'package:shealth/UI/tobeornottobe.dart';
@@ -23,6 +24,9 @@ class AppRoutes {
       return MaterialPageRoute<dynamic>(builder: (_) => LandingPage());
       case RouteNames.registerPatient:
       return MaterialPageRoute<dynamic>(builder: (_) => RegisterPatient());
+      case RouteNames.pdfView:
+      var url = settings.arguments as String;
+      return MaterialPageRoute<dynamic>(builder: (_) => PdfView(url: url,));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
