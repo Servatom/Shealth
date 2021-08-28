@@ -1,0 +1,75 @@
+.form-wrapper
+{
+    margin: 10vh auto 5vh;
+    padding: 100px 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+form
+{
+    width: 50%;
+}
+
+.form-wrapper h1
+{
+    font-size: 3rem;
+    margin: 0;
+    color: var(--textcolor);
+}
+
+.form-wrapper p
+{
+    font-size: 1.3rem;
+}
+
+
+label, input{
+    display: block;
+    margin: 5px 0;
+}
+
+.form-wrapper label
+{
+    color: var(--brown-dark);
+    font-weight: 600;
+}
+
+.form-wrapper input
+{
+    background-color: #7f7c824d;
+    border-radius: 5px;
+    border: none;
+    /* border-bottom: 2px solid var(--textcolor); */
+    padding: 12px 10px;
+    font-size: 1.3rem;
+    color: var(--brown-dark);
+    margin: 10px 0 20px;
+    width: 90%;
+    min-width: 200px;
+}
+input:focus
+{
+    outline: none;
+}
+
+.form-wrapper button
+{
+    display: block;
+    margin: 20px 0px;
+    padding: 8px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--purple-light);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.registerBtn
+{
+    margin-top: 60px ;
+}
