@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
-from shealth.models import Doctor, Patient, Appointment, User
 from shealth.forms import DoctorCreationForm, PatientCreationForm
+from shealth.models import Doctor, Patient, Appointment, User, Record
 from shealth.serializers import RecordSerializer, UserSerializer
 from shealth.qrcodeGenerate import *
 from wsgiref.util import FileWrapper
@@ -78,19 +78,21 @@ class UserDetailView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+
 class DoctorDocIdView(APIView):
     permission_classes = (IsAuthenticated,)
+
     def get(self, request):
         doctor_id = Doctor.objects.get(user=request.user).doc_id
         print(doctor_id)
         return Response({"doc_id": doctor_id})
 
-        
 
 class GiveAccessPatient(APIView):
     permission_classes = (IsAuthenticated,)
+
     def post(self, request):
-        doc_id = request.data['doc_id']
+        doc_id = request.data["doc_id"]
         print(doc_id)
         patient = request.user.patient
         doctor = None
@@ -98,11 +100,38 @@ class GiveAccessPatient(APIView):
             doctor = Doctor.objects.get(doc_id=doc_id)
         except:
             return Response({"detail": "Doctor not found"}, status=404)
-        
 
         # check if the doctor and patient are already connected
-        Appointment.objects.get_or_create(doctor=Doctor.objects.get(doc_id=doc_id), patient=patient)
+        Appointment.objects.get_or_create(
+            doctor=Doctor.objects.get(doc_id=doc_id), patient=patient
+        )
         return Response({"message": "Access given to {}".format(doctor.user.email)})
+
+
+def has_object_permission(self, request, email):
+    if request.user.email == email:
+        return True
+    elif Appointment.objects.filter(
+        doctor__user__email=request.user.email, patient__user__email=email
+    ).exists():
+        return True
+    else:
+        return False
+
+
+class ListRecords(APIView):
+    permission_classes = (IsAuthenticated, )
+
+    def get(self, request):
+        email = request.data["email"]
+        if not has_object_permission(self, request, email):
+            return Response(
+                {"detail": "You do not have access to this patient"}, status=404
+            )
+        records = Record.objects.filter(patient__user__email=email)
+        serializer = RecordSerializer(records, many=True)
+        return Response(serializer.data)
+
 
 class Index(APIView):
     def get(self, request):
