@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shealth/UI/sizeconfig.dart';
 
 class PatientScreen extends StatelessWidget {
   
@@ -15,12 +16,21 @@ class PatientScreen extends StatelessWidget {
           backgroundColor: Color(0xffb793da),
         ),
         appBar: AppBar(
-          title: Text('Shealth'),
+          title: Text(
+            'Shealth',
+            style: Theme.of(context).textTheme.headline1?.copyWith(
+              fontSize: SizeConfig.safeBlockVertical * 24,
+              color: Color(0xffF3F1F5)
+            ),
+            ),
           backgroundColor: Color(0xffb793da),
           centerTitle: true,
           bottom: TabBar(
             indicatorColor: Color(0xff49484b),
-            
+            labelStyle: Theme.of(context).textTheme.headline2?.copyWith(
+              fontSize: SizeConfig.safeBlockVertical * 16,
+              color: Color(0xffb793da)
+            ),
             tabs: [
               Tab(text: 'Prescriptions',),
               Tab(text: 'Reports',),
