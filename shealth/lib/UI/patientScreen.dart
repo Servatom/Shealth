@@ -16,6 +16,7 @@ class PatientScreen extends StatelessWidget {
           backgroundColor: Color(0xffb793da),
         ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             'Shealth',
             style: Theme.of(context).textTheme.headline1?.copyWith(

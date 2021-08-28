@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           )
         ),
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: RouteNames.homepage
+          initialRoute: RouteNames.ladning
       ),
     );
   }
