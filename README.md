@@ -1,2 +1,2 @@
 # hackx-shealth
-bhadwengers-assemble
+A tool for digitising medical history, prescriptions and reports.
