@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'shealth',
 
     # Third party apps
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'sslserver',
@@ -143,3 +144,5 @@ REST_FRAMEWORK = {
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+CORS_ORIGIN_ALLOW_ALL = True

@@ -1,6 +1,7 @@
 asgiref==3.4.1
 dj-rest-auth==2.1.11
 Django==3.2.6
+django-cors-headers==3.8.0
 django-sslserver==0.22
 djangorestframework==3.12.4
 ecdsa==0.17.0
