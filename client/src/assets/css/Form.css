@@ -1,0 +1,125 @@
+.register, .login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0vh auto;
+    min-height: 100vh;
+}
+
+.form-img
+{
+    width: 30%;
+}
+
+.form-wrapper
+{
+    
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    align-items: center;
+}
+form
+{
+    width: 80%;
+}
+
+.form-wrapper h1
+{
+    font-size: 3rem;
+    margin: 50px 0;
+    color: var(--brown-dark);
+    width: 100%;
+    text-align: left;
+}
+
+.form-wrapper p
+{
+    font-size: 1.3rem;
+}
+
+
+label, input,select{
+    display: block;
+    margin: 5px 0;
+}
+
+.form-wrapper label
+{
+    color: var(--brown-dark);
+    font-weight: 600;
+}
+
+.form-wrapper input, select
+{
+    background-color: #7f7c8244;
+    border-radius: 5px;
+    border: none;
+    /* border-bottom: 2px solid var(--textcolor); */
+    padding: 12px 10px;
+    font-size: 1.3rem;
+    color: black;
+    margin: 10px 0 20px;
+    width: 90%;
+    min-width: 200px;
+}
+select
+{
+    width: 92.5%;
+}
+input:focus
+{
+    outline: none;
+}
+
+.form-wrapper button
+{
+    display: inline;
+    margin: 40px 0px;
+    padding: 8px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--purple-light);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.form-wrapper button:hover
+{
+    background-color: var(--brown);
+    color: white;
+}
+.registerBtn
+{
+    margin-top: 60px ;
+}
+
+.choice
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.choice h1
+{
+    text-align: center;
+    font-size: 4rem;
+}
+.choice .buttons
+{
+    text-align: center;
+}
+
+.choice .buttons button
+{
+    font-size: 1.5rem;
+}
+img.choiceimg
+{
+    height: 35vh;
+    margin: 40px auto;
+}
