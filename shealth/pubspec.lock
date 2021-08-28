@@ -83,6 +83,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_file_dialog:
+    dependency: "direct main"
+    description:
+      name: flutter_file_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -197,7 +204,7 @@ packages:
       name: path_provider_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.0"
   path_provider_windows:
     dependency: transitive
     description:
@@ -232,7 +239,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "1.0.3"
   process:
     dependency: transitive
     description:

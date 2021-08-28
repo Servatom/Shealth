@@ -33,6 +33,7 @@ dependencies:
   http: ^0.13.3
   provider: ^5.0.0
   shared_preferences: ^2.0.6
+  flutter_file_dialog: ^2.1.1
 
 dev_dependencies:
   flutter_test:

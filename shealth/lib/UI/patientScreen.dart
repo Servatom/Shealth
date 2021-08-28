@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shealth/UI/sizeconfig.dart';
+import 'package:shealth/providers/auth.dart';
 
 class PatientScreen extends StatelessWidget {
   
@@ -11,7 +13,9 @@ class PatientScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color(0xffF3F1F5),
         floatingActionButton: FloatingActionButton(
-          onPressed: null,
+          onPressed: ()async{
+            await Provider.of<Auth>(context,listen: false).getPdfAndUpload();
+          },
           child: Icon(Icons.add),
           backgroundColor: Color(0xffb793da),
         ),
