@@ -9,11 +9,9 @@
     position: relative;
     align-items: center;
 }
-
-.login, .register
+form
 {
-    margin: 0 20px;
-    padding: 0px 20px;
+    width: 50%;
 }
 
 .form-wrapper h1
@@ -36,18 +34,18 @@ label, input{
 
 .form-wrapper label
 {
-    color: var(--brown);
+    color: var(--brown-dark);
     font-weight: 600;
 }
 
 .form-wrapper input
 {
-    background-color: rgba(139, 137, 137, 0.39);
+    background-color: #7f7c824d;
     border-radius: 5px;
     border: none;
     /* border-bottom: 2px solid var(--textcolor); */
-    padding: 8px 10px;
-    font-size: 1.2rem;
+    padding: 12px 10px;
+    font-size: 1.3rem;
     color: var(--brown-dark);
     margin: 10px 0 20px;
     width: 90%;
@@ -65,10 +63,10 @@ input:focus
     padding: 8px 20px;
     font-size: 1.2rem;
     cursor: pointer;
-    background-color: rgb(243, 233, 140);
+    background-color: var(--purple-light);
     border: none;
-    border-radius: 2px;
-    font-weight: 600;
+    border-radius: 5px;
+    font-weight: 500;
 }
 
 .registerBtn
