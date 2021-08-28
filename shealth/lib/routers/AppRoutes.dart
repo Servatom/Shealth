@@ -3,6 +3,7 @@ import 'package:shealth/UI/homepage.dart';
 import 'package:shealth/UI/landingpage.dart';
 import 'package:shealth/UI/loginScreen.dart';
 import 'package:shealth/UI/registerDoctor.dart';
+import 'package:shealth/UI/registerPatient.dart';
 import 'package:shealth/UI/tobeornottobe.dart';
 
 import 'RouteNames.dart';
@@ -20,6 +21,8 @@ class AppRoutes {
       return MaterialPageRoute<dynamic>(builder: (_) => LoginScreen());
       case RouteNames.ladning:
       return MaterialPageRoute<dynamic>(builder: (_) => LandingPage());
+      case RouteNames.registerPatient:
+      return MaterialPageRoute<dynamic>(builder: (_) => RegisterPatient());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

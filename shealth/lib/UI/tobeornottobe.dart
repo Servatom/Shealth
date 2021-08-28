@@ -55,7 +55,7 @@ class TobeOrNotToBe extends StatelessWidget {
               text: 'Patient',
               onTap: (){
                 if(type == 'register'){
-                  Navigator.pushNamed(context, RouteNames.registerDoctor );
+                  Navigator.pushNamed(context, RouteNames.registerPatient );
                 }
                 else{
                   Navigator.pushNamed(context, RouteNames.login);

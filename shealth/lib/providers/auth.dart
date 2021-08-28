@@ -28,6 +28,26 @@ class Auth extends ChangeNotifier {
       print(e);
     }
   }
+  Future<void> registerPatient(String name, String email, String phNo,
+      String gender, String age, String password) async {
+    final url = Uri.parse('https://shealthapi.servatom.com/register/p/');
+    try {
+      final response = await http.post(url, body: {
+        "name": name,
+        "email": email,
+        "phone": phNo,
+        "age": age,
+        "password": password,
+        "sex":gender,
+      });
+      if (response.statusCode != 200) {
+        var responseData = jsonDecode(response.body) as Map<String, dynamic>;
+        var error = responseData["errors"] as Map<String, dynamic>;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   Future<void> signIn(String email, String password) async {
     final url = Uri.parse('https://shealthapi.servatom.com/auth/login/');

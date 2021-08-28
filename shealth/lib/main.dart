@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shealth/UI/sizeconfig.dart';
 import 'package:shealth/providers/auth.dart';
 import 'package:shealth/routers/AppRoutes.dart';
 import 'package:shealth/routers/RouteNames.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: Auth())
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
           )
         ),
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: RouteNames.ladning
+          initialRoute: RouteNames.homepage
       ),
     );
   }
