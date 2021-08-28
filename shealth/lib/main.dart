@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shealth/UI/homepage.dart';
 import 'package:shealth/UI/patientScreen.dart';
+import 'package:shealth/UI/tobeornottobe.dart';
+import 'package:shealth/routers/AppRoutes.dart';
+import 'package:shealth/routers/RouteNames.dart';
 
 
 void main() {
@@ -25,7 +28,8 @@ class MyApp extends StatelessWidget {
           )
         )
       ),
-      home: PatientScreen(),
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+        initialRoute: RouteNames.homepage
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shealth/UI/sizeconfig.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shealth/routers/RouteNames.dart';
+
+import 'custombutton.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -42,43 +45,24 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: SizeConfig. safeBlockVertical * 50,
-            width: SizeConfig.safeBlockHorizontal*200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Color(0xffe7cdf8),
-            ),
-            child: Center(
-              child: Text(
-                'Log In',
-                style: Theme.of(context).textTheme.headline1?.copyWith(
-                      color: Color(0xff49484b),
-                      fontSize: SizeConfig.safeBlockVertical * 20
-                    ),
-              ),
-            ),
+          CustomButton(
+            text: 'Log In',
+            onTap: (){
+              Navigator.pushNamed(context, RouteNames.tobe,arguments:'login');
+            }
           ),
           SizedBox(height: 20,),
-          Container(
-            height: SizeConfig. safeBlockVertical * 50,
-            width: SizeConfig.safeBlockHorizontal*200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Color(0xffe7cdf8),
-            ),
-            child: Center(
-              child: Text(
-                'Sign Up',
-                style: Theme.of(context).textTheme.headline1?.copyWith(
-                      color: Color(0xff49484b),
-                      fontSize: SizeConfig.safeBlockVertical * 20
-                    ),
-              ),
-            ),
+          CustomButton(
+            text: 'Register',
+            onTap: (){
+              Navigator.pushNamed(context, RouteNames.tobe,arguments:'register');
+            },
+
           )
         ],
       ),
     );
   }
 }
+
+
