@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class PatientScreen extends StatelessWidget {
   
 
   @override
@@ -8,14 +8,19 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Color(0xffF3F1F5),
         floatingActionButton: FloatingActionButton(
           onPressed: null,
           child: Icon(Icons.add),
+          backgroundColor: Color(0xffb793da),
         ),
         appBar: AppBar(
           title: Text('Shealth'),
+          backgroundColor: Color(0xffb793da),
           centerTitle: true,
           bottom: TabBar(
+            indicatorColor: Color(0xff49484b),
+            
             tabs: [
               Tab(text: 'Prescriptions',),
               Tab(text: 'Reports',),
