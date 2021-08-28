@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'sslserver',
+    'dj_rest_auth',
 ]
 
 MIDDLEWARE = [
