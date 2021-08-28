@@ -74,10 +74,15 @@ input:focus
     outline: none;
 }
 
+.reqmsg
+{
+    display: block;
+}
+
 .form-wrapper button
 {
     display: inline;
-    margin: 40px 0px;
+    margin: 30px 0px;
     padding: 8px 20px;
     font-size: 1.2rem;
     cursor: pointer;

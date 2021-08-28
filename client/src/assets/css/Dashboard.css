@@ -1,0 +1,29 @@
+.dashboard
+{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 0px;
+    background-color: var(--primary);
+}
+
+.nav
+{
+    height: 80%;
+    width: 30vw;
+    padding: 30px;
+}
+
+.dashright
+{
+    width: 100%;
+    padding: 30px;
+    overflow-y: scroll;
+}
+
+.welcome
+{
+    font-size: 2.5rem;
+    margin-top: 12px;
+}

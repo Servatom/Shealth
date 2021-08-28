@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../assets/css/Form.css";
 import yoga from "../assets/images/yoga.svg";
 import "../assets/css/loader.css";
+import { Redirect } from "react-router-dom";
 
 const RegisterForm=(props)=>
 {
@@ -47,6 +48,7 @@ const RegisterForm=(props)=>
         setPass(event.target.value);
     }
 
+    const [created, setCreated] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({
         status: false,
@@ -85,8 +87,8 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                //  if(response.status==201)
-                //  setCreated(true)
+                 if(response.status==201)
+                 setCreated(true)
  
                 return data;
              })
@@ -131,8 +133,8 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                //  if(response.status==201)
-                //  setCreated(true)
+                 if(response.status==201)
+                 setCreated(true)
  
                 return data;
              })
@@ -168,11 +170,11 @@ const RegisterForm=(props)=>
                                     <label>Age</label>
                                     <input type="number" required onChange={ageChangeHandler} value={age}/>
                                     <label>Gender</label>
-                                    <select name="gender" id="gender" onChange={genderChangeHandler} value={gender}>
-                                        <option selected value="None">None</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Others">Others</option>
+                                    <select name="gender" id="gender" onChange={genderChangeHandler}>
+                                        <option selected value="">None</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Others</option>
                                     </select>
                                 </>
                                 :<>
@@ -194,7 +196,7 @@ const RegisterForm=(props)=>
                             <label>Password</label>
                             <input type="password" required onChange={passChangeHandler} value={pass}/>
                             {
-                                error.status?<span className="warning error">{error.body}</span>:null
+                                error.status?<span className="reqmsg">{error.body}</span>:null
                             }
                             <button type="submit" className="registerBtn" onClick={registerHandler} >Register</button>
                             {
@@ -203,7 +205,11 @@ const RegisterForm=(props)=>
                                 :null
                             }
                     </form>
-
+                            {
+                                created?
+                                <Redirect to="/login"/>
+                                :null
+                            }
                 </div>
                 <img className="form-img" src={yoga}/>
             </div>
