@@ -15,14 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf import settings
+from django.conf.urls.static import static
 from shealth import views
 
 urlpatterns = [
-    path('', views.Index.as_view(), name='index'),
-    path('admin/', admin.site.urls),
-    path('register/d/', views.DoctorRegisterView.as_view(), name='doctor_register'),
-    path('register/p/', views.PatientRegisterView.as_view(), name='patient_register'),
-    path('auth/', include("dj_rest_auth.urls")),
-    path('doctor/qrcode/', views.DoctorQRCode.as_view(), name='give_qrcode'),
+    path("", views.Index.as_view(), name="index"),
+    path("admin/", admin.site.urls),
+    path("register/d/", views.DoctorRegisterView.as_view(), name="doctor_register"),
+    path("register/p/", views.PatientRegisterView.as_view(), name="patient_register"),
+    path("auth/", include("dj_rest_auth.urls")),
+    path("doctor/qrcode/", views.DoctorQRCode.as_view(), name="give_qrcode"),
+    path("patient/upload/", views.UploadDocs.as_view(), name="upload_docs"),
+    path("detail/", views.UserDetailView.as_view(), name="user_detail"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
