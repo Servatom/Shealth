@@ -86,6 +86,9 @@ class Auth extends ChangeNotifier {
           prefs.setBool('isDoctor', true);
         }
         notifyListeners();
+      }else{
+        var error = jsonDecode(response.body)["non_field_errors"];
+        throw error;
       }
     } catch (error) {
       throw error;

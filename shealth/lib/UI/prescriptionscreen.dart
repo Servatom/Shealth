@@ -12,12 +12,13 @@ class PrescriptionScreen extends StatefulWidget {
 
 class _PrescriptionScreenState extends State<PrescriptionScreen> {
   bool isInit = true;
-  bool loading = true;
+  bool isLoading = false;
+  
   @override
   void didChangeDependencies() {
     if (isInit) {
       setState(() {
-        loading = true;
+        isLoading = true;
       });
       
       Provider.of<Prescription>(context)
@@ -25,7 +26,7 @@ class _PrescriptionScreenState extends State<PrescriptionScreen> {
               Provider.of<Auth>(context).user.email)
           .then((value) {
         setState(() {
-          loading = false;
+          isLoading = false;
         });
       });
     }
@@ -37,14 +38,34 @@ class _PrescriptionScreenState extends State<PrescriptionScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           onPressed: ()async{
-            await Provider.of<Prescription>(context,listen: false).getPdfAndUpload(Provider.of<Auth>(context,listen: false).token);
+            try{
+              setState(() {
+                isLoading = true;
+                            });
+              await Provider.of<Prescription>(context,listen: false).getPdfAndUpload(Provider.of<Auth>(context,listen: false).token);
+            }catch(e){
+              showDialog(context: context, builder: (_){
+                            return AlertDialog(
+                              title: Text('Error Occured'),
+                              content: e.toString()=="Null check operator used on a null value"? Text('Cancelled Upload') : Text('$e'),
+                              actions: [
+                                TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok'))
+                              ],
+                            );
+                          });
+            }finally{
+              setState(() {
+                              isLoading = false;
+                            });
+            }
+            
             
           },
           child: Icon(Icons.add),
           backgroundColor: Color(0xffb793da),
         ),
       body: SafeArea(
-        child: loading
+        child: isLoading
             ? Center(
                 child: CircularProgressIndicator(),
               )

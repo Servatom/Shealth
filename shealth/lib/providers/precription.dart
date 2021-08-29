@@ -12,6 +12,7 @@ List<String> documents = [];
 final url2 = Uri.parse('https://shealthapi.servatom.com/patient/upload/');
 Future getPdfAndUpload(String _token)async{
   print(_token);
+  try{
   final params = OpenFileDialogParams(
     dialogType: OpenFileDialogType.document,
     sourceType: SourceType.photoLibrary,
@@ -29,6 +30,9 @@ Future getPdfAndUpload(String _token)async{
   },
   body: bytes
   );
+  }catch(e){
+    throw e;
+  }
 }
 
 Future<void> getDocuments (String token , String email) async{

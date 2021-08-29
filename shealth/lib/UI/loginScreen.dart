@@ -7,11 +7,19 @@ import 'package:shealth/providers/auth.dart';
 import 'package:shealth/routers/RouteNames.dart';
 import 'package:http/http.dart' as http;
 
-class LoginScreen extends StatelessWidget {
-  String email = '';
-  String password = '';
+class LoginScreen extends StatefulWidget {
   final type;
   LoginScreen({this.type});
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String email = '';
+  bool isLoading = false;
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               })),
       body: SafeArea(
         child: Center(
-          child: SingleChildScrollView(
+          child: isLoading ? Center(child: CircularProgressIndicator(),) : SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Center(
@@ -120,10 +128,29 @@ class LoginScreen extends StatelessWidget {
                   child: CustomButton(
                       text: 'Login',
                       onTap: () async {
-                        print(type);
+                        print(widget.type);
+                        try{
+                          setState(() {
+                            isLoading = true;
+                                                    });
                         await Provider.of<Auth>(context, listen: false)
-                            .signIn(email, password,type);
+                            .signIn(email, password,widget.type);
                         Navigator.pushNamed(context, RouteNames.ladning,);
+                        }catch(e){
+                          showDialog(context: context, builder: (_){
+                            return AlertDialog(
+                              title: Text('Error Occured'),
+                              content: Text('$e'),
+                              actions: [
+                                TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok'))
+                              ],
+                            );
+                          });
+                        }finally{
+                          setState(() {
+                            isLoading = false;
+                                                    });
+                        }
                       }),
                 ),
               )
