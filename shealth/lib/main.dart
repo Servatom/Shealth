@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: Auth()),
@@ -28,23 +27,18 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Patients()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          textTheme: TextTheme(
-            headline1: GoogleFonts.roboto(
-              fontWeight:  FontWeight.bold,
-            ),
-            headline2: GoogleFonts.roboto(
-              fontWeight: FontWeight.w500,
-            )
-          )
-        ),
+          title: 'Flutter Demo',
+          theme: ThemeData(
+              primarySwatch: Colors.blue,
+              textTheme: TextTheme(
+                  headline1: GoogleFonts.roboto(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  headline2: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w500,
+                  ))),
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: RouteNames.ladning
-          
-      ),
+          initialRoute: RouteNames.ladning),
     );
   }
 }
-

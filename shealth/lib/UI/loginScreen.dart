@@ -42,120 +42,150 @@ class _LoginScreenState extends State<LoginScreen> {
               })),
       body: SafeArea(
         child: Center(
-          child: isLoading ? Center(child: CircularProgressIndicator(),) : SingleChildScrollView(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Center(
-                child: Container(
-                  width: SizeConfig.safeBlockHorizontal * 250,
-                  height: SizeConfig.safeBlockVertical * 250,
-                  child: SvgPicture.network(
-                    'https://raw.githubusercontent.com/rdotjain/hackx-shealth/Web/client/src/assets/images/medical1.svg?token=ARKWUJUWMQORPJ4JD2OYWFLBGNP24',
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
-                            fontSize: SizeConfig.safeBlockVertical * 20,
-                            color: Color(0xff49484b),
+          child: isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SingleChildScrollView(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Container(
+                            width: SizeConfig.safeBlockHorizontal * 250,
+                            height: SizeConfig.safeBlockVertical * 250,
+                            child: SvgPicture.network(
+                              'https://raw.githubusercontent.com/rdotjain/hackx-shealth/Web/client/src/assets/images/medical1.svg?token=ARKWUJUWMQORPJ4JD2OYWFLBGNP24',
+                            ),
                           ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      width: SizeConfig.screenWidth / 1.2,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xff7f7c82).withOpacity(.34)),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: SizeConfig.safeBlockHorizontal * 10),
-                            hintText: 'Enter your phone number',
-                            hintStyle: TextStyle(color: Colors.black)),
-                            keyboardType: TextInputType.emailAddress,
-                        onChanged: (value) {
-                          email = value;
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Password',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
-                            fontSize: SizeConfig.safeBlockVertical * 20,
-                            color: Color(0xff49484b),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical * 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Email',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2
+                                    ?.copyWith(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical * 20,
+                                      color: Color(0xff49484b),
+                                    ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                width: SizeConfig.screenWidth / 1.2,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff7f7c82).withOpacity(.34)),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: SizeConfig.safeBlockHorizontal *
+                                              10),
+                                      hintText: 'Enter your phone number',
+                                      hintStyle:
+                                          TextStyle(color: Colors.black)),
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: (value) {
+                                    email = value;
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      width: SizeConfig.screenWidth / 1.2,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xff7f7c82).withOpacity(.34)),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: SizeConfig.safeBlockHorizontal * 10),
-                            hintText: 'Enter your password',
-                            hintStyle: TextStyle(color: Colors.black)),
-                            obscureText: true,
-                        onChanged: (value) {
-                          password = value;
-                        },
-                      ),
-                    ),
-                  ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical * 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Password',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2
+                                    ?.copyWith(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical * 20,
+                                      color: Color(0xff49484b),
+                                    ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                width: SizeConfig.screenWidth / 1.2,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff7f7c82).withOpacity(.34)),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: SizeConfig.safeBlockHorizontal *
+                                              10),
+                                      hintText: 'Enter your password',
+                                      hintStyle:
+                                          TextStyle(color: Colors.black)),
+                                  obscureText: true,
+                                  onChanged: (value) {
+                                    password = value;
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical * 15),
+                          child: Center(
+                            child: CustomButton(
+                                text: 'Login',
+                                onTap: () async {
+                                  print(widget.type);
+                                  try {
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    await Provider.of<Auth>(context,
+                                            listen: false)
+                                        .signIn(email, password, widget.type);
+                                    Navigator.pushNamed(
+                                      context,
+                                      RouteNames.ladning,
+                                    );
+                                  } catch (e) {
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) {
+                                          return AlertDialog(
+                                            title: Text('Error Occured'),
+                                            content: Text('$e'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text('Ok'))
+                                            ],
+                                          );
+                                        });
+                                  } finally {
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                  }
+                                }),
+                          ),
+                        )
+                      ]),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 15),
-                child: Center(
-                  child: CustomButton(
-                      text: 'Login',
-                      onTap: () async {
-                        print(widget.type);
-                        try{
-                          setState(() {
-                            isLoading = true;
-                                                    });
-                        await Provider.of<Auth>(context, listen: false)
-                            .signIn(email, password,widget.type);
-                        Navigator.pushNamed(context, RouteNames.ladning,);
-                        }catch(e){
-                          showDialog(context: context, builder: (_){
-                            return AlertDialog(
-                              title: Text('Error Occured'),
-                              content: Text('$e'),
-                              actions: [
-                                TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok'))
-                              ],
-                            );
-                          });
-                        }finally{
-                          setState(() {
-                            isLoading = false;
-                                                    });
-                        }
-                      }),
-                ),
-              )
-            ]),
-          ),
         ),
       ),
     );

@@ -13,8 +13,7 @@ class CustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Color(0xffF3F1F5),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(29)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29)),
       child: Container(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -23,26 +22,24 @@ class CustomDialog extends StatelessWidget {
             children: [
               Text(
                 'Registration Successful',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    ?.copyWith(
-                        color: Color(0xff49484b),
-                        fontSize: SizeConfig
-                                .safeBlockVertical *
-                            24),
+                style: Theme.of(context).textTheme.headline1?.copyWith(
+                    color: Color(0xff49484b),
+                    fontSize: SizeConfig.safeBlockVertical * 24),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Icon(
                 Icons.check,
                 color: Colors.greenAccent,
-                size:
-                    SizeConfig.safeBlockVertical * 32,
+                size: SizeConfig.safeBlockVertical * 32,
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               CustomButton(
                 text: 'Go to login',
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, RouteNames.login);
                 },
               )

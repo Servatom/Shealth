@@ -73,7 +73,6 @@ class RegisterDoctor extends StatelessWidget {
                     ],
                   ),
                 ),
-                
                 Container(
                   margin:
                       EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
@@ -100,7 +99,7 @@ class RegisterDoctor extends StatelessWidget {
                                   left: SizeConfig.safeBlockHorizontal * 10),
                               hintText: 'Enter your phone number',
                               hintStyle: TextStyle(color: Colors.black)),
-                              keyboardType: TextInputType.phone,
+                          keyboardType: TextInputType.phone,
                           onChanged: (value) {
                             phNo = value;
                           },
@@ -169,7 +168,7 @@ class RegisterDoctor extends StatelessWidget {
                                   left: SizeConfig.safeBlockHorizontal * 10),
                               hintText: 'Enter your email',
                               hintStyle: TextStyle(color: Colors.black)),
-                              keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.emailAddress,
                           onChanged: (value) {
                             email = value;
                           },
@@ -204,7 +203,7 @@ class RegisterDoctor extends StatelessWidget {
                                   left: SizeConfig.safeBlockHorizontal * 10),
                               hintText: 'Enter your password',
                               hintStyle: TextStyle(color: Colors.black)),
-                              obscureText: true,
+                          obscureText: true,
                           onChanged: (value) {
                             password = value;
                           },
@@ -220,8 +219,9 @@ class RegisterDoctor extends StatelessWidget {
                     child: CustomButton(
                         text: 'Register',
                         onTap: () async {
-                          await Provider.of<Auth>(context,listen: false).registerDoctor(
-                              name, email, phNo, speciality, password);
+                          await Provider.of<Auth>(context, listen: false)
+                              .registerDoctor(
+                                  name, email, phNo, speciality, password);
                           showDialog(
                               context: context,
                               builder: (_) {
@@ -238,4 +238,3 @@ class RegisterDoctor extends StatelessWidget {
     );
   }
 }
-

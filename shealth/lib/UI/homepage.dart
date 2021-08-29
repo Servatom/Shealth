@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shealth/routers/RouteNames.dart';
 
 import 'custombutton.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -20,24 +21,24 @@ class HomePage extends StatelessWidget {
             child: Text(
               'Shealth',
               style: Theme.of(context).textTheme.headline1?.copyWith(
-                fontSize: SizeConfig.safeBlockVertical * 48,
-                color: Color(0xff49484b),
-              ),
+                    fontSize: SizeConfig.safeBlockVertical * 48,
+                    color: Color(0xff49484b),
+                  ),
             ),
           ),
           Container(
-
             child: Text(
               'Share your health',
               style: Theme.of(context).textTheme.headline2?.copyWith(
-                fontSize: SizeConfig.safeBlockVertical * 16,
-                color: Color(0xff49484b),
-              ),
+                    fontSize: SizeConfig.safeBlockVertical * 16,
+                    color: Color(0xff49484b),
+                  ),
             ),
           ),
           Center(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: SizeConfig.safeBlockVertical*20),
+              margin: EdgeInsets.symmetric(
+                  vertical: SizeConfig.safeBlockVertical * 20),
               width: SizeConfig.safeBlockHorizontal * 300,
               height: SizeConfig.safeBlockVertical * 300,
               child: SvgPicture.network(
@@ -46,23 +47,23 @@ class HomePage extends StatelessWidget {
             ),
           ),
           CustomButton(
-            text: 'Log In',
-            onTap: (){
-              Navigator.pushNamed(context, RouteNames.tobe,arguments:'login');
-            }
+              text: 'Log In',
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.tobe,
+                    arguments: 'login');
+              }),
+          SizedBox(
+            height: 20,
           ),
-          SizedBox(height: 20,),
           CustomButton(
             text: 'Register',
-            onTap: (){
-              Navigator.pushNamed(context, RouteNames.tobe,arguments:'register');
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.tobe,
+                  arguments: 'register');
             },
-
           )
         ],
       ),
     );
   }
 }
-
-
