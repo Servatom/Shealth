@@ -7,7 +7,7 @@ import { useState } from "react";
 import swal from 'sweetalert';
 
 
-const SideNav =()=>
+const SideNav =(props)=>
 {   
 
     
@@ -44,7 +44,7 @@ const SideNav =()=>
                 <h2 className="heading">Shealth</h2>
             </div>
             
-            <a ><h4 className="add"><GrAdd className="icon"/> Add </h4></a>
+            <a onClick={props.onAdd}><h4 className="add"><GrAdd className="icon"/> Add </h4></a>
             <a><h4 className="active" ><GrDocumentText className="icon"/>Prescriptions</h4></a>
             <a><h4 className="" ><IoMdStats className="icon"/>Reports</h4></a>
             <a><h4 className="" ><GrUserManager className="icon"/>Doctors</h4></a>
