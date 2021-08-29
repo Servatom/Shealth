@@ -48,7 +48,6 @@ const RegisterForm=(props)=>
         setPass(event.target.value);
     }
 
-    const [created, setCreated] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({
         status: false,
@@ -87,8 +86,7 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                 if(response.status==201)
-                 setCreated(true)
+                props.onRegister(true)
  
                 return data;
              })
@@ -133,9 +131,8 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                 if(response.status==201)
-                 setCreated(true)
- 
+                props.onRegister(true)
+
                 return data;
              })
             .then(result => {
@@ -205,11 +202,7 @@ const RegisterForm=(props)=>
                                 :null
                             }
                     </form>
-                            {
-                                created?
-                                <Redirect to="/login"/>
-                                :null
-                            }
+                        
                 </div>
                 <img className="form-img" src={yoga}/>
             </div>
