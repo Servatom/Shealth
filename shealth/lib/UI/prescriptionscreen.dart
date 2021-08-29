@@ -19,6 +19,7 @@ class _PrescriptionScreenState extends State<PrescriptionScreen> {
       setState(() {
         loading = true;
       });
+      
       Provider.of<Prescription>(context)
           .getDocuments(Provider.of<Auth>(context, listen: false).token,
               Provider.of<Auth>(context).user.email)
@@ -37,6 +38,7 @@ class _PrescriptionScreenState extends State<PrescriptionScreen> {
       floatingActionButton: FloatingActionButton(
           onPressed: ()async{
             await Provider.of<Prescription>(context,listen: false).getPdfAndUpload(Provider.of<Auth>(context,listen: false).token);
+            
           },
           child: Icon(Icons.add),
           backgroundColor: Color(0xffb793da),
@@ -57,41 +59,46 @@ class _PrescriptionScreenState extends State<PrescriptionScreen> {
                         onTap: (){
                           Navigator.pushNamed(context, RouteNames.pdfView,arguments: 'https://shealthapi.servatom.com${documents[index]}');
                         },
-                        child: Container(
-                          margin: EdgeInsets.only(top: 20),
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                            width: SizeConfig.safeBlockHorizontal * 200,
-                            height: SizeConfig.safeBlockVertical * 150,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Color(0xffe7cdf8),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  flex: 1,
-                                    child: Image.network(
-                                        'https://www.seekpng.com/png/full/511-5118328_pdf-icon-clipart-pdf-adobe-acrobat-computer-icons.png')),
-                                Flexible(
-                                  flex: 2,
-                                  child: Container(
-                                    child: Text(
-                                      '${documents[index].split('/').last}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline1
-                                          ?.copyWith(
-                                            fontSize:
-                                                SizeConfig.safeBlockVertical * 24,
-                                            color: Color(0xff49484b),
-                                          ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                            margin: EdgeInsets.only(top: 20),
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                              
+                              height: SizeConfig.safeBlockVertical * 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xff7f7c82).withOpacity(.24),
+                              ),
+                              child: Row(
+                                
+                                children: [
+                                  Container(
+                                    width: SizeConfig.safeBlockHorizontal * 100,
+                                    height: SizeConfig.safeBlockVertical * 80,
+                                      child: Image.network(
+                                          'https://www.seekpng.com/png/full/511-5118328_pdf-icon-clipart-pdf-adobe-acrobat-computer-icons.png')),
+                                          SizedBox(width: 5,),
+                                  Flexible(
+                                   
+                                    child: Container(
+                                      child: Text(
+                                        '${documents[index].split('/').last}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline1
+                                            ?.copyWith(
+                                              fontSize:
+                                                  SizeConfig.safeBlockVertical * 18,
+                                              color: Color(0xff49484b),
+                                            ),
+                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
+                        ),
                       );
                 }),
       ),

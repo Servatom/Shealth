@@ -75,40 +75,7 @@ class RegisterPatient extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  margin:
-                      EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Email',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
-                              fontSize: SizeConfig.safeBlockVertical * 20,
-                              color: Color(0xff49484b),
-                            ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        width: SizeConfig.screenWidth / 1.2,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff7f7c82).withOpacity(.34)),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: SizeConfig.safeBlockHorizontal * 10),
-                              hintText: 'Enter your email',
-                              hintStyle: TextStyle(color: Colors.black)),
-                          onChanged: (value) {
-                            email = value;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+               
                 Container(
                   margin:
                       EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
@@ -201,13 +168,47 @@ class RegisterPatient extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(
                                   left: SizeConfig.safeBlockHorizontal * 10),
-                              hintText: 'Enter your Gender',
+                              hintText: 'Enter your Gender (M, F, O)',
                               hintStyle: TextStyle(color: Colors.black)),
                           onChanged: (value) {
                             gender = value;
                           },
                         ),
                       ),
+                       Container(
+                  margin:
+                      EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Email',
+                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                              fontSize: SizeConfig.safeBlockVertical * 20,
+                              color: Color(0xff49484b),
+                            ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 5),
+                        width: SizeConfig.screenWidth / 1.2,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xff7f7c82).withOpacity(.34)),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(
+                                  left: SizeConfig.safeBlockHorizontal * 10),
+                              hintText: 'Enter your email',
+                              hintStyle: TextStyle(color: Colors.black)),
+                          onChanged: (value) {
+                            email = value;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                       Container(
                   margin:
                       EdgeInsets.only(top: SizeConfig.safeBlockVertical * 20),
@@ -234,6 +235,7 @@ class RegisterPatient extends StatelessWidget {
                                   left: SizeConfig.safeBlockHorizontal * 10),
                               hintText: 'Enter your password',
                               hintStyle: TextStyle(color: Colors.black)),
+                             obscureText: true,
                           onChanged: (value) {
                             password = value;
                           },

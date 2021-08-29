@@ -119,7 +119,7 @@ class _DoctorsScreenForPatientState extends State<DoctorsScreenForPatient> {
                             height: SizeConfig.safeBlockVertical *120,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Color(0xffe7cdf8),
+                                color: Color(0xff7f7c82).withOpacity(.24),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

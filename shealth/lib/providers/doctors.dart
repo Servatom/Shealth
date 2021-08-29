@@ -24,6 +24,7 @@ class Doctor {
 }
 
 class Doctors extends ChangeNotifier{
+  String docId = '';
   List<Doctor> _doctors = [];
   List<Doctor> get doctor {
     return [..._doctors];
@@ -43,5 +44,12 @@ class Doctors extends ChangeNotifier{
       headers: { 'Authorization': 'Token $token'},
       body: {"doc_id": docId}
     );
+  }
+  Future<void> getDocId(String token)async{
+    final url = Uri.parse('https://shealthapi.servatom.com/doctor/doc_id/');
+    final response = await http.get(url,headers: {'Authorization': 'Token $token'});
+    final responseData = jsonDecode(response.body);
+    docId = responseData["doc_id"];
+   
   }
 }

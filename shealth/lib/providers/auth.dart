@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 class User{
   final email;
-  User({this.email});
+  final isDoctor;
+  User({this.email,this.isDoctor});
 }
 class Auth extends ChangeNotifier {
   String? _token ;
@@ -17,7 +18,7 @@ class Auth extends ChangeNotifier {
   String get token{
     return _token!;
   }
- late User user ;
+  User user = User() ;
   Future<void> registerDoctor(String name, String email, String phNo,
       String speciality, String password) async {
     final url = Uri.parse('https://shealthapi.servatom.com/register/d/');
@@ -61,7 +62,7 @@ class Auth extends ChangeNotifier {
    
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> signIn(String email, String password,String type) async {
     final url = Uri.parse('https://shealthapi.servatom.com/auth/login/');
     try {
       final response = await http.post(url, body: {
@@ -70,10 +71,21 @@ class Auth extends ChangeNotifier {
       });
       if (response.statusCode == 200) {
         _token = jsonDecode(response.body)["key"];
-        user = User(email: email);
+        
         final prefs = await SharedPreferences.getInstance();
         prefs.setString('userData', _token!);
-        prefs.setString('email', user.email);
+        
+        if(type=='Patient'){
+          user = User(email: email,isDoctor: false);
+          prefs.setString('email', user.email);
+          prefs.setBool('isDoctor', false);
+        }
+        else{
+          user = User(email: email,isDoctor: true);
+          prefs.setString('email', user.email);
+          prefs.setBool('isDoctor', true);
+        }
+        notifyListeners();
       }
     } catch (error) {
       throw error;
@@ -93,7 +105,7 @@ class Auth extends ChangeNotifier {
       return false;
     }
     _token = prefs.getString('userData');
-    user = User(email: prefs.getString('email'));
+    user = User(email: prefs.getString('email'),isDoctor: prefs.getBool('isDoctor'));
     notifyListeners();
     
     return true;

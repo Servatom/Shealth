@@ -37,6 +37,7 @@ dependencies:
   open_file: ^3.2.1
   flutter_cached_pdfview: ^0.3.5
   path_provider_windows: ^0.0.4
+  qr_flutter: ^4.0.0
 
 dev_dependencies:
   flutter_test:

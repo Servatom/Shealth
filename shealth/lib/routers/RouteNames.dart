@@ -6,4 +6,5 @@ class RouteNames{
   static const String ladning = 'landing-page';
   static const String registerPatient = '/registerPatient-page';
   static const String pdfView = 'pdf-page';
+  static const String presForDoc = 'pres-page';
 }

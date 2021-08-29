@@ -10,6 +10,7 @@ class PdfView extends StatelessWidget {
     return Scaffold( 
       appBar: AppBar(
         title: Text('View Pdf'),
+        backgroundColor: Color(0xffb793da),
       ),
    body: Container(
       child: PDF(

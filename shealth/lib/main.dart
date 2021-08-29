@@ -5,6 +5,7 @@ import 'package:shealth/UI/pdfpage.dart';
 import 'package:shealth/UI/sizeconfig.dart';
 import 'package:shealth/providers/auth.dart';
 import 'package:shealth/providers/doctors.dart';
+import 'package:shealth/providers/patients.dart';
 import 'package:shealth/providers/precription.dart';
 import 'package:shealth/routers/AppRoutes.dart';
 import 'package:shealth/routers/RouteNames.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Auth()),
         ChangeNotifierProvider.value(value: Prescription()),
         ChangeNotifierProvider.value(value: Doctors()),
+        ChangeNotifierProvider.value(value: Patients()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

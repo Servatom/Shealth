@@ -10,6 +10,8 @@ import 'package:http/http.dart' as http;
 class LoginScreen extends StatelessWidget {
   String email = '';
   String password = '';
+  final type;
+  LoginScreen({this.type});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +71,7 @@ class LoginScreen extends StatelessWidget {
                                 left: SizeConfig.safeBlockHorizontal * 10),
                             hintText: 'Enter your phone number',
                             hintStyle: TextStyle(color: Colors.black)),
+                            keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
                           email = value;
                         },
@@ -102,6 +105,7 @@ class LoginScreen extends StatelessWidget {
                                 left: SizeConfig.safeBlockHorizontal * 10),
                             hintText: 'Enter your password',
                             hintStyle: TextStyle(color: Colors.black)),
+                            obscureText: true,
                         onChanged: (value) {
                           password = value;
                         },
@@ -116,9 +120,10 @@ class LoginScreen extends StatelessWidget {
                   child: CustomButton(
                       text: 'Login',
                       onTap: () async {
+                        print(type);
                         await Provider.of<Auth>(context, listen: false)
-                            .signIn(email, password);
-                        Navigator.pushNamed(context, RouteNames.ladning);
+                            .signIn(email, password,type);
+                        Navigator.pushNamed(context, RouteNames.ladning,);
                       }),
                 ),
               )

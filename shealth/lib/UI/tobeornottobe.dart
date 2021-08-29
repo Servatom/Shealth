@@ -35,7 +35,7 @@ class TobeOrNotToBe extends StatelessWidget {
                   Navigator.pushNamed(context, RouteNames.registerDoctor );
                 }
                 else{
-                  Navigator.pushNamed(context, RouteNames.login);
+                  Navigator.pushNamed(context, RouteNames.login,arguments: 'Register');
                 }
               }
             ),
@@ -58,7 +58,7 @@ class TobeOrNotToBe extends StatelessWidget {
                   Navigator.pushNamed(context, RouteNames.registerPatient );
                 }
                 else{
-                  Navigator.pushNamed(context, RouteNames.login);
+                  Navigator.pushNamed(context, RouteNames.login,arguments: 'Patient');
                 }
               },
 
