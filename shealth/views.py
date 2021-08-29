@@ -34,8 +34,7 @@ class DoctorRegisterView(APIView):
             return Response({"detail": "Doctor registered successfully"})
         else:
             return Response(
-                {"detail": "Doctor registration failed", "errors": form.errors}
-            )
+                {"detail": "Doctor registration failed", "errors": form.errors}, status=400)
 
 
 class PatientRegisterView(APIView):
@@ -46,8 +45,7 @@ class PatientRegisterView(APIView):
             return Response({"detail": "Patient registered successfully"})
         else:
             return Response(
-                {"detail": "Patient registration failed", "errors": form.errors}
-            )
+                {"detail": "Patient registration failed", "errors": form.errors}, status=400)
 
 
 class DoctorQRCode(APIView):
