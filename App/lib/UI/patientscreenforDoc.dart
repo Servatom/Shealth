@@ -100,7 +100,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              18,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -113,7 +113,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              18,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -130,7 +130,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              16,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -143,7 +143,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              16,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -160,7 +160,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              16,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -173,7 +173,7 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                                         ?.copyWith(
                                                           fontSize: SizeConfig
                                                                   .safeBlockVertical *
-                                                              20,
+                                                              16,
                                                           color:
                                                               Color(0xff49484b),
                                                         ),
@@ -183,13 +183,15 @@ class _PatientScreenForDocState extends State<PatientScreenForDoc> {
                                             ],
                                           ),
                                         ),
-                                        Container(
-                                          width: SizeConfig.safeBlockHorizontal *
-                                              100,
-                                          height:
-                                              SizeConfig.safeBlockVertical * 80,
-                                          child: Image.network(
-                                              'https://raw.githubusercontent.com/Servatom/Second-Hand/main/Front-End/images/default-avatar.png'),
+                                        Flexible(
+                                          child: Container(
+                                            width: SizeConfig.safeBlockHorizontal *
+                                                100,
+                                            height:
+                                                SizeConfig.safeBlockVertical * 80,
+                                            child: Image.network(
+                                                'https://raw.githubusercontent.com/Servatom/Second-Hand/main/Front-End/images/default-avatar.png'),
+                                          ),
                                         )
                                       ],
                                     )),

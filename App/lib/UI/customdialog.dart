@@ -38,9 +38,9 @@ class CustomDialog extends StatelessWidget {
                 height: 20,
               ),
               CustomButton(
-                text: 'Go to login',
+                text: 'Go to home',
                 onTap: () {
-                  Navigator.pushNamed(context, RouteNames.login);
+                  Navigator.pushNamed(context, RouteNames.homepage);
                 },
               )
             ],
