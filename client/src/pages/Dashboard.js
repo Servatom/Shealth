@@ -6,7 +6,7 @@ import RecordList from "../components/RecordList";
 import SideNav from "../components/SideNav";
 import AuthContext from "../store/auth-context";
 
-const Dashboard=(props)=>
+const Dashboard=()=>
 {
     
     const [profile, setProfile]= useState({});

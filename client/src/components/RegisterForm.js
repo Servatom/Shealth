@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../assets/css/Form.css";
 import yoga from "../assets/images/yoga.svg";
 import "../assets/css/loader.css";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 const RegisterForm=(props)=>
 {
@@ -53,7 +53,7 @@ const RegisterForm=(props)=>
         status: false,
         body: ""
     });
-
+    const history=useHistory();
 
 
     const registerHandler=(e)=>{
@@ -86,19 +86,21 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                props.onRegister(true)
- 
+
+                if(response.status==200)
+                history.replace("/login")
+
                 return data;
              })
              .then(result => {
                  console.log(result)
                  
-                 let firstkey = Object.keys(result)[0];
+                 let firstkey = Object.keys(result.errors)[0];
                  
                  setError(
                      {
                          status: true,
-                         body: result[firstkey]
+                         body: result.errors[firstkey]
                      }
                  )
                  
@@ -106,6 +108,12 @@ const RegisterForm=(props)=>
              .catch(error => 
             {console.log('error', error);
              setLoading(false);
+             setError(
+                {
+                    status: true,
+                    body: "An error occured :/"
+                }
+            )
             });
         }
         else
@@ -131,7 +139,9 @@ const RegisterForm=(props)=>
             .then(response => {
                 const data= response.json();
                 setLoading(false)
-                props.onRegister(true)
+
+                if(response.status==200)
+                history.push("/login");
 
                 return data;
              })
@@ -150,6 +160,12 @@ const RegisterForm=(props)=>
              })
             .catch(error => {console.log('error', error);
             setLoading(false);
+            setError(
+                {
+                    status: true,
+                    body: "An error occured :/"
+                }
+            )
             });
         }
     }

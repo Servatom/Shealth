@@ -4,12 +4,13 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AuthContext from './store/auth-context';
 
 
 function App() {
   
-  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const authCtx = useContext(AuthContext);
   const [email, setEmail] = useState("");
   
   return (
@@ -17,16 +18,25 @@ function App() {
       <Switch>
         
         <Route exact path="/">
-          <LandingPage/>
+          { authCtx.isLoggedIn?
+          <Redirect to="/dashboard"/>
+          :<LandingPage/>}
         </Route>
         <Route path="/register" exact>
           <Register/>
         </Route>
+        {!authCtx.isLoggedIn && (
         <Route path="/login" exact>
-          <Login setEmail={setEmail}/>
-        </Route>
+          <Login />
+        </Route>)}
+        {authCtx.isLoggedIn && (
         <Route path="/dashboard" exact>
-          <Dashboard email={email}/>
+          <Dashboard />
+        </Route>)}
+        <Route path="*">
+          {
+            authCtx.isLoggedIn?<Redirect to="/dashboard"/>:<Redirect to="/login"/>
+          }
         </Route>
       </Switch>
     </Router>
