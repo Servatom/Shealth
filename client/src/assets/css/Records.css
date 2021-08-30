@@ -1,0 +1,27 @@
+.recordlist
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+
+.record
+{
+    height:120px;
+    width: 200px;
+    padding: 40px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--purple-light);
+    border-radius: 8px;
+}
+
+.docicon
+{
+    transform: scale(2.5);
+}
