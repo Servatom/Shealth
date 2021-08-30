@@ -69,8 +69,12 @@
     text-align: center;
 }
 
-.addicon
+.addfile
 {
-    transform: scale(3);
+    border: 2px solid var(--purple-dark) !important;
+}
 
+#filename
+{
+    text-align: left;
 }

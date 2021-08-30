@@ -52,13 +52,10 @@ const Login =()=>
 
         fetch("https://shealthapi.servatom.com/auth/login/", requestOptions)
         .then(response => {
-            
-            
+ 
             const data= response.json();
             setLoading(false)
 
-            
-            
             return data;
          })
          .then(result => {
