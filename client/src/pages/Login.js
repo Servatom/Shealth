@@ -2,13 +2,14 @@ import loginimg from "../assets/images/security.svg";
 import { useContext, useState } from "react";
 import "../assets/css/loader.css";
 import AuthContext from "../store/auth-context";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 const Login =()=>
 {
     
     
     const authCtx = useContext(AuthContext);
+    const history = useHistory();
     
     const [email, setEmail] = useState("");
     const emailChangeHandler=(event)=>
@@ -63,7 +64,9 @@ const Login =()=>
              
              console.log(result.key, email);
              authCtx.login(result.key);
-             
+
+             if(result.key)
+             history.replace("/dashboard");
             let firstkey = Object.keys(result)[0];
 
              setError(
@@ -116,9 +119,6 @@ const Login =()=>
                     </form>
                 </div>
                 <img className="form-img" src={loginimg}/>
-                {
-                    authCtx.isLoggedIn?<Redirect to="/dashboard"/>:null
-                }
             </div>
     )
 }
