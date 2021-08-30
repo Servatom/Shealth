@@ -1,0 +1,1 @@
+python3 manage.py runsslserver --certificate /DeployedBackend/Shealth/API/origin.pem --key /DeployedBackend/Shealth/API/key.pem 0.0.0.0:5755
