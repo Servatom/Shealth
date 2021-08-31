@@ -69,6 +69,7 @@ const Addfile=(props)=>
             const data= response.json();
             setLoading(false)
             
+            props.fetchRecords();
             return data;
          })
          .then(result => {

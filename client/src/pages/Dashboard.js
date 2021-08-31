@@ -13,21 +13,18 @@ const Dashboard=()=>
     const [addFile, setAddFile] = useState(false);
 
     const authCtx = useContext(AuthContext);
-    const [token, setToken] = useState(authCtx.token);
-    const [email, setEmail] = useState(authCtx.email);
 
 
-    console.log("Token "+token);
-    console.log(email);
+
 
    useEffect(()=>{
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Token "+token);
+        myHeaders.append("Authorization", "Token "+authCtx.token);
         myHeaders.append("Content-Type", "application/json");
         
         
         var raw = JSON.stringify({
-        "email": email
+        "email": authCtx.email
         });
 
         var requestOptions = {
@@ -47,6 +44,38 @@ const Dashboard=()=>
     },[])
 
     
+    const [records, setRecords] = useState(()=>[]);
+    
+    const getRecords=()=>{
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Token "+authCtx.token);
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+        "email": authCtx.email
+        });
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("https://shealthapi.servatom.com/patient/records/", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            setRecords(result);
+        })
+        .catch(error => console.log('error', error));
+
+    }
+
+    useEffect(()=>{
+        getRecords();
+    },[])
 
     return(
         
@@ -56,11 +85,13 @@ const Dashboard=()=>
             </div>
             <div className="dashright">
                 <h1 className="welcome">Welcome, {profile.name}!</h1>
-                <RecordList/>
+                <div className="records">
+                    <RecordList records={records}/>
+                </div>
             </div>
             {
                 addFile?
-                <Addfile onClose={setAddFile} token={token}/>
+                <Addfile onClose={setAddFile} token={authCtx.token} fetchRecords={getRecords}/>
                 :null
             }
         </div>
