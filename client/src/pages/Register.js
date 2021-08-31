@@ -19,8 +19,6 @@ const Register=()=>{
             setIsPatient(true);
         }
     
-    const [created, setCreated] = useState(false);
-    
     return(
 
         <>
@@ -35,7 +33,7 @@ const Register=()=>{
                 <img className="choiceimg" src={choiceimg}/>
             </div>
             :
-            created?<Redirect to="/login"/>:<RegisterForm isPatient={isPatient} onRegister={setCreated}/>
+            <RegisterForm isPatient={isPatient}/>
         }
         
         

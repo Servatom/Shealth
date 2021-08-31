@@ -1,41 +1,39 @@
 import "../assets/css/Sidenav.css";
 import logo from "../assets/images/logo2.png";
-import {GrDocumentText, GrUserManager, GrSettingsOption, GrAdd} from 'react-icons/gr';
+import {GrDocumentText, GrUserManager, GrSettingsOption, GrAdd, GrLogout} from 'react-icons/gr';
 import {IoMdStats} from 'react-icons/io';
 import {AiFillDelete} from 'react-icons/ai';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import swal from 'sweetalert';
+import AuthContext from "../store/auth-context";
+import { useHistory } from "react-router-dom";
 
 
 const SideNav =(props)=>
 {   
 
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
     
-    const allDeleteHandler=()=>
-    {
-        swal({
-            title: "Delete all notes?",
-            text: "This action cannot be reverted!!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) 
-            {
-              swal("Poof! Your notes have been deleted!", {
-                icon: "success",
-              });
-            } 
-            else 
-            {
-              swal("Your notes are safe!");
-            }
-          });
-    }
-
-
- 
+  const logoutHandler=()=>
+  {
+    swal(
+      {
+        text:"Are you sure you want to log out?",
+        icon:"warning",
+        dangerMode:true,
+        buttons: true,
+      }
+    )
+    .then((willlogout)=>{
+      if(willlogout)
+      {
+        authCtx.logout();
+        history.replace("/");
+        
+      }
+    })
+  }
 
     return(
         <div className="sidenav">
@@ -49,6 +47,7 @@ const SideNav =(props)=>
             <a><h4 className="" ><IoMdStats className="icon"/>Reports</h4></a>
             <a><h4 className="" ><GrUserManager className="icon"/>Doctors</h4></a>
             <a><h4 className="" ><GrSettingsOption className="icon"/>Settings</h4></a>
+            <a onClick={logoutHandler}><h4 className="" ><GrLogout className="icon"/>Logout</h4></a>
             <div className="sidenavIcons">
                 {/* <AiFillDelete className="delete-all" onClick={allDeleteHandler}/> */}
             </div>
