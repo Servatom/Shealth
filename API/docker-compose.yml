@@ -10,3 +10,4 @@ services:
       - "5755:5755"
     volumes:
       - ./db.sqlite3:/app/db.sqlite3
+      - ./media:/app/media

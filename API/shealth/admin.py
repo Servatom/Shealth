@@ -1,5 +1,5 @@
 from django.contrib import admin
-from shealth.models import User, Doctor, Patient
+from shealth.models import Appointment, Record, User, Doctor, Patient
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -17,3 +17,5 @@ class PatientAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Doctor, DoctorAdmin)
 admin.site.register(Patient, PatientAdmin)
+admin.site.register(Record)
+admin.site.register(Appointment)
