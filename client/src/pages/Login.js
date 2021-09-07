@@ -2,7 +2,7 @@ import loginimg from "../assets/images/security.svg";
 import { useContext, useState } from "react";
 import "../assets/css/loader.css";
 import AuthContext from "../store/auth-context";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 const Login =()=>
 {
@@ -97,6 +97,7 @@ const Login =()=>
                 <div className="form-wrapper">
                     <form>
                         <h1>Login</h1>
+                        <p>New User? <Link to="/register">Register Here</Link></p>
                             {/* <label>Country</label>
                             <input type="text" required />
                             <label>State</label>
