@@ -4,14 +4,13 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import AuthContext from './store/auth-context';
 
 
 function App() {
   
   const authCtx = useContext(AuthContext);
-  const [email, setEmail] = useState("");
   
   return (
     <Router>
