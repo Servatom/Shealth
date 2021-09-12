@@ -1,8 +1,6 @@
 import "../assets/css/Addfile.css"
 import {GrClose} from 'react-icons/gr';
-import {AiOutlineFileAdd} from 'react-icons/ai';
 import { useState } from "react";
-import AuthContext from "../store/auth-context";
 const Addfile=(props)=>
 {
     const closeModal=()=>
@@ -93,35 +91,38 @@ const Addfile=(props)=>
     }
     
     return(
-        <div className="expanded">
-            <GrClose className="close-icon" onClick={closeModal}/>
-            <div className="contents">
-                
-                <div className="form-wrapper">
-                    <form>
-                        <h2>Upload your file here</h2>
-                        <input type="file" onChange={fileChangeHandler}></input>
-                        {
-                            isUploaded?
-                            <>
-                                <label>Filename:</label>
-                                <input type="text" required onChange={filenameChangeHandler} value={filename} id="filename"/>
-                                <button type="submit" className="registerBtn addfile" onClick={fileUploadHandler} >Upload</button>
-                            </>
-                            :null
-                        }
-                        {
-                            loading?
-                            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-                            :null
-                        }
-                    </form>
+        <>
+            <div className="backdrop" onClick={closeModal}></div>
+            <div className="expanded">
+                <GrClose className="close-icon" onClick={closeModal}/>
+                <div className="contents">
+                    
+                    <div className="form-wrapper">
+                        <form>
+                            <h2>Upload your file here</h2>
+                            <input type="file" onChange={fileChangeHandler}></input>
+                            {
+                                isUploaded?
+                                <>
+                                    <label>Filename:</label>
+                                    <input type="text" required onChange={filenameChangeHandler} value={filename} id="filename"/>
+                                    <button type="submit" className="registerBtn addfile" onClick={fileUploadHandler} >Upload</button>
+                                </>
+                                :null
+                            }
+                            {
+                                loading?
+                                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                :null
+                            }
+                        </form>
+                    </div>
+                    {
+                        error.status?<span className="reqmsg">{error.body}</span>:null
+                    }
                 </div>
-                {
-                    error.status?<span className="reqmsg">{error.body}</span>:null
-                }
             </div>
-        </div>
+        </>
     )
 }
 
