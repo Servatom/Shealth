@@ -16,7 +16,7 @@ ecdsa==0.17.0
 jose==1.0.0
 numpy==1.21.2
 opencv-python==4.5.3.56
-pillow==8.3.1
+pillow==8.3.2
 pyasn1==0.4.8
 pydantic==1.8.2
 python-jose==3.3.0
