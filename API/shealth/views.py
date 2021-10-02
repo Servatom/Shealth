@@ -1,4 +1,5 @@
 from re import search
+import re
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -11,6 +12,7 @@ from shealth.qrcodeGenerate import *
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.db.models import Q
+from shealth.generateAvatar import *
 import os
 
 
@@ -165,3 +167,17 @@ class ListPatients(APIView):
 class Index(APIView):
     def get(self, request):
         return Response({"detail": "Welcome to Shealth"})
+
+class AvatarChange(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        email = request.user.email
+        user = User.objects.get(email=email)
+        prev_img = user.avatar
+        new_avatar = selectImage()
+        while(new_avatar == prev_img):
+            new_avatar = selectImage()
+        user.avatar = new_avatar
+        user.save()
+        return Response({"detail": "Avatar changed successfully"})
