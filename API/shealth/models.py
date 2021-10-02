@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from shealth.managers import UserManager
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-
+from shealth.generateAvatar import *
 def user_directory_path(instance, filename):
         return 'records/{0}/{1}'.format(instance.patient.user.uuid, filename)
 
@@ -28,6 +28,7 @@ class User(AbstractBaseUser):
     is_doctor = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    avatar = models.CharField("avatar", max_length=400, default=selectImage())
     
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["name",]
