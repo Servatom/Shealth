@@ -12,7 +12,7 @@ from shealth.qrcodeGenerate import *
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.db.models import Q
-from generateAvatar import *
+from shealth.generateAvatar import *
 import os
 
 
