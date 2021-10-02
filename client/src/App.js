@@ -29,7 +29,7 @@ function App() {
           <Login />
         </Route>)}
         {authCtx.isLoggedIn && (
-        <Route path="/dashboard" exact>
+        <Route path="/dashboard" >
           <Dashboard />
         </Route>)}
         <Route path="*">
