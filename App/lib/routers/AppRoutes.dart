@@ -6,6 +6,7 @@ import 'package:shealth/UI/landingpage.dart';
 import 'package:shealth/UI/loginScreen.dart';
 import 'package:shealth/UI/pdfpage.dart';
 import 'package:shealth/UI/prescriptionforDoc.dart';
+import 'package:shealth/UI/qr_code_screen.dart';
 import 'package:shealth/UI/registerDoctor.dart';
 import 'package:shealth/UI/registerPatient.dart';
 import 'package:shealth/UI/tobeornottobe.dart';
@@ -50,11 +51,10 @@ class AppRoutes {
                   email: data["email"],
                   name: data["name"],
                 ));
+      case RouteNames.qrCode:
+        return MaterialPageRoute<dynamic>(builder: (_) => QrCodeScreen());
       default:
-        return MaterialPageRoute(
-            builder: (_) => Scaffold(
-                body: Center(
-                    child: Text('No route defined for ${settings.name}'))));
+        return MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('No route defined for ${settings.name}'))));
     }
   }
 }

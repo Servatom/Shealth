@@ -30,25 +30,20 @@ class Doctors extends ChangeNotifier {
 
   final url = Uri.parse('https://shealthapi.servatom.com/patient/dlist/');
   Future<void> getDoctors(String token) async {
-    final response =
-        await http.get(url, headers: {'Authorization': 'Token $token'});
+    final response = await http.get(url, headers: {'Authorization': 'Token $token'});
     Iterable responseData = jsonDecode(response.body);
-    final extractedData =
-        responseData.map((json) => Doctor.fromJson(json)).toList();
+    final extractedData = responseData.map((json) => Doctor.fromJson(json)).toList();
     _doctors = extractedData;
   }
 
   Future<void> addDoctor(String token, String docId) async {
-    final url =
-        Uri.parse('https://shealthapi.servatom.com/patient/access/doc_id/');
-    await http.post(url,
-        headers: {'Authorization': 'Token $token'}, body: {"doc_id": docId});
+    final url = Uri.parse('https://shealthapi.servatom.com/patient/access/doc_id/');
+    await http.post(url, headers: {'Authorization': 'Token $token'}, body: {"doc_id": docId});
   }
 
   Future<void> getDocId(String token) async {
     final url = Uri.parse('https://shealthapi.servatom.com/doctor/doc_id/');
-    final response =
-        await http.get(url, headers: {'Authorization': 'Token $token'});
+    final response = await http.get(url, headers: {'Authorization': 'Token $token'});
     final responseData = jsonDecode(response.body);
     docId = responseData["doc_id"];
   }
