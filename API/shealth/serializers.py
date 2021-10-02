@@ -5,7 +5,7 @@ from shealth.models import Record, User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("name", "email", "phone", "is_doctor")
+        fields = ("name", "email", "phone", "is_doctor", "avatar")
 
 
 class RecordSerializer(serializers.ModelSerializer):
