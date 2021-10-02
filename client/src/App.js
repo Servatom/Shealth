@@ -34,7 +34,7 @@ function App() {
         </Route>)}
         <Route path="*">
           {
-            authCtx.isLoggedIn?<Redirect to="/dashboard"/>:<Redirect to="/login"/>
+            authCtx.isLoggedIn?<Redirect to="/"/>:<Redirect to="/login"/>
           }
         </Route>
       </Switch>

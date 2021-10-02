@@ -5,6 +5,8 @@ import Record from "../components/Record";
 import RecordList from "../components/RecordList";
 import SideNav from "../components/SideNav";
 import AuthContext from "../store/auth-context";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 const Dashboard=()=>
 {
@@ -77,17 +79,40 @@ const Dashboard=()=>
         getRecords();
     },[])
 
+    const [currentTab, setCurrentTab] = useState(1);
+
     return(
         
         <div className="dashboard">
             <div className="nav">
-                <SideNav onAdd={setAddFile}/>
+                <SideNav onAdd={setAddFile}
+                setCurrentTab={setCurrentTab}
+                currentTab={currentTab}/>
             </div>
             <div className="dashright">
                 <h1 className="welcome">Welcome, {profile.name}!</h1>
-                <div className="records">
-                    <RecordList records={records}/>
-                </div>
+                <Switch>
+                    <Route exact path='/dashboard'>
+                        <div className="records">
+                            <RecordList records={records}/>
+                        </div>
+                    </Route>
+                    <Route path='/dashboard/reports'>
+                        <div className="records">
+                            <h1>Reports Screen</h1>
+                        </div>
+                    </Route>
+                    <Route path='/dashboard/add_Doc'>
+                        <div className="records">
+                            <h1>Add Doc</h1>
+                        </div>
+                    </Route>
+                    <Route path='/dashboard/settings'>
+                        <div className="records">
+                            <h1>Add Doc</h1>
+                        </div>
+                    </Route>
+                </Switch>
             </div>
             {
                 addFile?
