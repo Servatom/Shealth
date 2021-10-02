@@ -181,3 +181,29 @@ class AvatarChange(APIView):
         user.avatar = new_avatar
         user.save()
         return Response({"detail": "Avatar changed successfully"})
+
+class DoctorDetails(APIView):
+    def post(self, request):
+        doc_id = request.data["doc_id"]
+        doctor = Doctor.objects.get(doc_id=doc_id)
+        # get doctor details
+        response = {}
+        response["doctor_name"] = doctor.user.name
+        response["doctor_email"] = doctor.user.email
+        response["doctor_speciality"] = doctor.speciality
+        return Response(response)
+
+class ResetPasswordView(APIView):
+    permission_classes = (IsAuthenticated,)
+    def post(self, request):
+
+        # check old password
+        email = request.user.email
+        user = User.objects.get(email=email)
+
+        if not user.check_password(request.data['old_password']):
+            return Response({"detail": "Old password is incorrect"}, status=400)
+        # change new password
+        user.set_password(request.data['new_password'])
+        user.save()
+        return Response({"detail": "password changed"})
