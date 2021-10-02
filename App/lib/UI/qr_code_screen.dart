@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:shealth/providers/doctors.dart';
 
 class QrCodeScreen extends StatefulWidget {
   static const routeName = "/qr-code";
@@ -16,6 +16,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   late Barcode result;
   late QRViewController controller;
+  late String doctorid;
 
   bool resultInitialized = false;
 
@@ -34,6 +35,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        doctorid = result.code;
         resultInitialized = true;
       });
     });
@@ -46,8 +48,8 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
   }
 
   //for opening the qr code link in the browser
-  void customLaunch(command) async {
-    await launch(command);
+  void readQR() {
+    Doctors().addDoctor("", doctorid);
   }
 
   @override
@@ -75,7 +77,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                 child: (resultInitialized)
                     ? GestureDetector(
                         child: Text('Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}'),
-                        onTap: () => {customLaunch(result.code)},
+                        onTap: () => {readQR()},
                       )
                     : Text('Scan a code'),
               ),
