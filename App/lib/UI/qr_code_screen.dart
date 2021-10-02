@@ -43,10 +43,9 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
         doctorid = result.code;
         resultInitialized = true;
       });
-    readQR();
-    Navigator.pushNamed(context, RouteNames.ladning);
+      readQR();
+      Navigator.pushNamed(context, RouteNames.ladning);
     });
-    
   }
 
   @override
@@ -58,7 +57,8 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
   //for opening the qr code link in the browser
   void readQR() {
     print(doctorid);
-    Doctors().addDoctor(Provider.of<Auth>(context,listen: false).token, doctorid);
+    Doctors()
+        .addDoctor(Provider.of<Auth>(context, listen: false).token, doctorid);
   }
 
   @override
@@ -88,13 +88,13 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                         child: Column(
                           children: [
                             Text('Doctor ID: ${result.code}'),
-                             SizedBox(
-                            height: 20,
-                          ),
-                          CustomButton(
-                            text: 'Add doc id',
-                            onTap: readQR,
-                          )
+                            SizedBox(
+                              height: 20,
+                            ),
+                            CustomButton(
+                              text: 'Add doc id',
+                              onTap: readQR,
+                            )
                           ],
                         ),
                         onTap: () => {readQR()},
