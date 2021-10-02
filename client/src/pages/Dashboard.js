@@ -91,28 +91,26 @@ const Dashboard=()=>
             </div>
             <div className="dashright">
                 <h1 className="welcome">Welcome, {profile.name}!</h1>
+                <div className="records">
                 <Switch>
                     <Route exact path='/dashboard'>
-                        <div className="records">
                             <RecordList records={records}/>
-                        </div>
                     </Route>
-                    <Route path='/dashboard/reports'>
-                        <div className="records">
-                            <h1>Reports Screen</h1>
-                        </div>
+                    <Route exact path='/dashboard/reports'>
+                            <h1>Reports</h1>
                     </Route>
-                    <Route path='/dashboard/add_Doc'>
-                        <div className="records">
+                    <Route exact path='/dashboard/add_Doc'>
+                        
                             <h1>Add Doc</h1>
-                        </div>
+                        
                     </Route>
-                    <Route path='/dashboard/settings'>
-                        <div className="records">
-                            <h1>Add Doc</h1>
-                        </div>
+                    <Route exact path='/dashboard/settings'>
+                        
+                            <h1>Settings</h1>
+                        
                     </Route>
                 </Switch>
+                </div>
             </div>
             {
                 addFile?
