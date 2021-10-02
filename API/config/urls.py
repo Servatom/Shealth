@@ -34,6 +34,8 @@ urlpatterns = [
     path("patient/dlist/", views.ListDoctors.as_view(), name="patient_doctors_list"),
     path("doctor/plist/", views.ListPatients.as_view(), name="patient_patients_list"),
     path("user/avatarChange/", views.AvatarChange.as_view(), name="change_avatar"),
+    path("doctor/details/", views.DoctorDetails.as_view(), name="doctor_detail"),
+    path("user/reset_passwd/", views.ResetPasswordView.as_view(), name="reset_passwd"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
