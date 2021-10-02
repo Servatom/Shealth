@@ -41,8 +41,8 @@ class HomePage extends StatelessWidget {
                   vertical: SizeConfig.safeBlockVertical * 20),
               width: SizeConfig.safeBlockHorizontal * 300,
               height: SizeConfig.safeBlockVertical * 300,
-              child: SvgPicture.network(
-                'https://raw.githubusercontent.com/rdotjain/hackx-shealth/Web/client/src/assets/images/medical2.svg?token=ARKWUJTBQWHR7Y5MU6RC5ITBGM4DQ',
+              child: Image.network(
+                'https://assets.servatom.com/Shealth/logo.png',
               ),
             ),
           ),

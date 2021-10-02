@@ -7,4 +7,5 @@ class RouteNames {
   static const String registerPatient = '/registerPatient-page';
   static const String pdfView = 'pdf-page';
   static const String presForDoc = 'pres-page';
+  static const String qrCode = "/qr-code";
 }
