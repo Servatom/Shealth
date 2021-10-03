@@ -153,8 +153,16 @@ class ListDoctors(APIView):
         doctors = Appointment.objects.filter(patient=request.user.patient)
         users = [doctor.doctor.user for doctor in doctors]
         serializer = UserSerializer(users, many=True)
+
+        # add a field in the serializer to show the doctor's speciality
+        for doctor in doctors:
+            for user in serializer.data:
+                if user["email"] == doctor.doctor.user.email:
+                    user["speciality"] = doctor.doctor.speciality
+                    break
+        
         return Response(serializer.data)
-    
+        
 class ListPatients(APIView):
     permission_classes = (IsAuthenticated,)
 

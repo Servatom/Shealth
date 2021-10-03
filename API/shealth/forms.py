@@ -16,9 +16,10 @@ class DoctorCreationForm(forms.ModelForm):
         user = super(DoctorCreationForm, self).save(commit=False)
         user.is_doctor = True
         user.set_password(self.cleaned_data["password"])
+        user.name = user.name.capitalize()
         user.save()
         Token.objects.create(user=user)
-        doctor = Doctor(user=user, speciality=self.cleaned_data["speciality"])
+        doctor = Doctor(user=user, speciality=self.cleaned_data["speciality"].capitalize())
         doctor.save()
         return user
 
@@ -36,6 +37,7 @@ class PatientCreationForm(forms.ModelForm):
         user = super(PatientCreationForm, self).save(commit=False)
         user.is_patient = True
         user.set_password(self.cleaned_data["password"])
+        user.name = user.name.capitalize()
         user.save()
         Token.objects.create(user=user)
         patient = Patient(
