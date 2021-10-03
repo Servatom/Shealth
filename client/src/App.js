@@ -29,12 +29,12 @@ function App() {
           <Login />
         </Route>)}
         {authCtx.isLoggedIn && (
-        <Route path="/dashboard" exact>
+        <Route path="/dashboard" >
           <Dashboard />
         </Route>)}
         <Route path="*">
           {
-            authCtx.isLoggedIn?<Redirect to="/dashboard"/>:<Redirect to="/login"/>
+            authCtx.isLoggedIn?<Redirect to="/"/>:<Redirect to="/login"/>
           }
         </Route>
       </Switch>

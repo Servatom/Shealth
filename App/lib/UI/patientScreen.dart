@@ -5,6 +5,7 @@ import 'package:shealth/UI/prescriptionscreen.dart';
 import 'package:shealth/UI/sizeconfig.dart';
 import 'package:shealth/providers/auth.dart';
 import 'package:shealth/providers/precription.dart';
+import 'package:shealth/routers/RouteNames.dart';
 
 class PatientScreen extends StatelessWidget {
   @override
@@ -19,22 +20,23 @@ class PatientScreen extends StatelessWidget {
                 icon: Icon(Icons.logout),
                 onPressed: () {
                   Provider.of<Auth>(context, listen: false).logout();
+                }),
+            IconButton(
+                icon: Icon(Icons.qr_code),
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteNames.qrCode);
                 })
           ],
           automaticallyImplyLeading: false,
           title: Text(
             'Shealth',
-            style: Theme.of(context).textTheme.headline1?.copyWith(
-                fontSize: SizeConfig.safeBlockVertical * 24,
-                color: Color(0xffF3F1F5)),
+            style: Theme.of(context).textTheme.headline1?.copyWith(fontSize: SizeConfig.safeBlockVertical * 24, color: Color(0xffF3F1F5)),
           ),
           backgroundColor: Color(0xffb793da),
           centerTitle: true,
           bottom: TabBar(
             indicatorColor: Color(0xff49484b),
-            labelStyle: Theme.of(context).textTheme.headline2?.copyWith(
-                fontSize: SizeConfig.safeBlockVertical * 16,
-                color: Color(0xffb793da)),
+            labelStyle: Theme.of(context).textTheme.headline2?.copyWith(fontSize: SizeConfig.safeBlockVertical * 16, color: Color(0xffb793da)),
             tabs: [
               Tab(
                 text: 'Prescriptions',
