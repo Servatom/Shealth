@@ -21,6 +21,21 @@
     position: relative;
     align-items: center;
 }
+.searchdoc
+{
+    flex-direction: row;
+    width: 100%;
+}
+.searchdoc form{
+    width: 100%;
+}
+.searchdoc input
+{
+    display: inline;
+    width: 50% !important;
+    min-width: 300px !important;
+}
+
 form
 {
     width: 80%;
@@ -100,6 +115,12 @@ input:focus
 .registerBtn
 {
     margin-top: 60px ;
+}
+
+.searchdoc button
+{
+    margin: auto 30px;
+    padding: 10px 20px;
 }
 
 .choice
