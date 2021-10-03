@@ -6,6 +6,7 @@ import RecordList from "../components/RecordList";
 import SideNav from "../components/SideNav";
 import AuthContext from "../store/auth-context";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AddDoc from "../components/AddDoc";
 
 
 const Dashboard=()=>
@@ -96,18 +97,17 @@ const Dashboard=()=>
                     <Route exact path='/dashboard'>
                             <RecordList records={records}/>
                     </Route>
+
                     <Route exact path='/dashboard/reports'>
                             <h1>Reports</h1>
                     </Route>
+
                     <Route exact path='/dashboard/add_Doc'>
-                        
-                            <h1>Add Doc</h1>
-                        
+                        <AddDoc/>
                     </Route>
+
                     <Route exact path='/dashboard/settings'>
-                        
-                            <h1>Settings</h1>
-                        
+                            <h1>Settings</h1>    
                     </Route>
                 </Switch>
                 </div>

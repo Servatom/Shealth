@@ -43,7 +43,7 @@ const SideNav =(props)=>
             
             <a onClick={props.onAdd}><h4 className="add"><GrAdd className="icon"/> Add </h4></a>
 
-            <Link to={'/dashboard'}>
+            
             <h4 onClick={() => {
                 props.setCurrentTab(1);
                 history.push('/dashboard');
@@ -51,9 +51,9 @@ const SideNav =(props)=>
                 className={props.currentTab === 1 ? 'active' : ''} >
                 <GrDocumentText className="icon"/>Prescriptions
             </h4>  
-            </Link>
             
-            <Link to={'/dashboard/reports'}>
+            
+            
             <h4 onClick={() => {
                 props.setCurrentTab(2);
                 history.push('/dashboard/reports');
@@ -61,9 +61,9 @@ const SideNav =(props)=>
                 className={props.currentTab === 2 ? 'active' : ''} >
                 <IoMdStats className="icon"/>Reports
             </h4>
-            </Link>
+            
 
-            <Link to={'/dashboard/add_Doc'}>
+            
             <h4 onClick={() => {
                 props.setCurrentTab(3);
                 history.push('/dashboard/add_Doc');
@@ -71,9 +71,9 @@ const SideNav =(props)=>
                 className={props.currentTab === 3 ? 'active' : ''} >
                 <GrUserManager className="icon"/>Doctors
             </h4> 
-            </Link>
+            
 
-            <Link to={'/dashboard/settings'}>
+            
             <h4 onClick={() => {
                 props.setCurrentTab(4);
                 history.push('/dashboard/settings');
@@ -81,7 +81,7 @@ const SideNav =(props)=>
                 className={props.currentTab === 4 ? 'active' : ''} >
                 <GrSettingsOption className="icon"/>Settings
             </h4> 
-            </Link>
+            
             <a onClick={logoutHandler}><h4 className="" ><GrLogout className="icon"/>Logout</h4></a>
             <div className="sidenavIcons">
                 {/* <AiFillDelete className="delete-all" onClick={allDeleteHandler}/> */}
