@@ -36,9 +36,13 @@ class Auth extends ChangeNotifier {
       if (response.statusCode != 200) {
         var responseData = jsonDecode(response.body) as Map<String, dynamic>;
         var error = responseData["errors"] as Map<String, dynamic>;
+      } else {
+        var responseData = jsonDecode(response.body) as Map<String, dynamic>;
+        var error = responseData["errors"] as Map<String, dynamic>;
+        throw error;
       }
     } catch (e) {
-      print(e);
+      throw e;
     }
   }
 
@@ -58,10 +62,12 @@ class Auth extends ChangeNotifier {
         var responseData = jsonDecode(response.body) as Map<String, dynamic>;
         var error = responseData["errors"] as Map<String, dynamic>;
       } else {
-        print('nahi hua');
+        var responseData = jsonDecode(response.body) as Map<String, dynamic>;
+        var error = responseData["errors"] as Map<String, dynamic>;
+        throw error;
       }
     } catch (e) {
-      print(e);
+      throw e;
     }
   }
 

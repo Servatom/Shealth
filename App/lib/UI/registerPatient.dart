@@ -3,7 +3,6 @@ import 'package:shealth/UI/custombutton.dart';
 import 'package:shealth/UI/sizeconfig.dart';
 import 'package:provider/provider.dart';
 import 'package:shealth/providers/auth.dart';
-import 'package:shealth/routers/RouteNames.dart';
 
 import 'customdialog.dart';
 
@@ -253,15 +252,33 @@ class RegisterPatient extends StatelessWidget {
                         child: CustomButton(
                             text: 'Register',
                             onTap: () async {
-                              await Provider.of<Auth>(context, listen: false)
-                                  .registerPatient(
-                                      name, email, phNo, gender, age, password);
+                              try {
+                                await Provider.of<Auth>(context, listen: false)
+                                    .registerPatient(name, email, phNo, gender,
+                                        age, password);
 
-                              showDialog(
-                                  context: context,
-                                  builder: (_) {
-                                    return CustomDialog();
-                                  });
+                                showDialog(
+                                    context: context,
+                                    builder: (_) {
+                                      return CustomDialog();
+                                    });
+                              } catch (e) {
+                                showDialog(
+                                    context: context,
+                                    builder: (_) {
+                                      return AlertDialog(
+                                        title: Text('Error Occured'),
+                                        content: Text('$e'),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Ok'))
+                                        ],
+                                      );
+                                    });
+                              }
                             }),
                       ),
                     )
