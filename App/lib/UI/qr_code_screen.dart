@@ -44,7 +44,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
         resultInitialized = true;
       });
     readQR();
-    Navigator.pushNamed(context, RouteNames.ladning);
+    Navigator.pushNamed(context, RouteNames.landing);
     });
     
   }

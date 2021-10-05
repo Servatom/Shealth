@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .signIn(email, password, widget.type);
                                     Navigator.pushNamed(
                                       context,
-                                      RouteNames.ladning,
+                                      RouteNames.landing,
                                     );
                                   } catch (e) {
                                     showDialog(

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ))),
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: RouteNames.ladning),
+          initialRoute: RouteNames.landing),
     );
   }
 }

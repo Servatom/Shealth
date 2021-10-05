@@ -32,7 +32,7 @@ class AppRoutes {
             builder: (_) => LoginScreen(
                   type: type,
                 ));
-      case RouteNames.ladning:
+      case RouteNames.landing:
         var type = settings.arguments as String;
         return MaterialPageRoute<dynamic>(builder: (_) => LandingPage());
       case RouteNames.registerPatient:
