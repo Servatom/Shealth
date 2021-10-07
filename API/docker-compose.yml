@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  api:
-    image: api
+  shealth:
+    image: shealth
     build:
       context: .
       dockerfile: ./Dockerfile
